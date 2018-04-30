@@ -10,7 +10,8 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        System.out.println("sdsadsadasd");
-        System.out.println("new project");
+        System.out.println("sdsadsadasdsktsktsktskt");
+        System.out.print("dsafsrgsdths");
+        System.out.print("amit");
     }
 }
