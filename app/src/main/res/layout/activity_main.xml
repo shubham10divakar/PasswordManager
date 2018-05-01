@@ -7,6 +7,9 @@
     android:background="@drawable/skt"
     tools:context=".MainActivity">
 
+
+
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -16,7 +19,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="31dp"
         android:layout_marginEnd="31dp"
-        android:src="@android:drawable/ic_dialog_email"
-        />
+        android:src="@android:drawable/ic_dialog_email" />
+
+
+
 
 </RelativeLayout>
