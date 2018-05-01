@@ -18,5 +18,5 @@
         android:layout_marginEnd="31dp"
         android:src="@android:drawable/ic_dialog_email"
         />
-    
+
 </RelativeLayout>
