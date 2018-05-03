@@ -6,12 +6,18 @@ import android.widget.TextView;
 
 public class MasterPasswordSignUp extends AppCompatActivity {
 
-    TextView t1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_password_sign_up);
 
-        t1=(TextView)findViewById(R.id.textViewPassWrap);
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }
