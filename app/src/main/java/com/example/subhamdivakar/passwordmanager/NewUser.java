@@ -124,7 +124,7 @@ public class NewUser extends AppCompatActivity {
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             startActivity(new Intent(NewUser.this,MasterPasswordSignUp.class));
-                            
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
