@@ -1,5 +1,6 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -129,7 +130,13 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) {Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "PASS WRAP");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Click to contact us ");
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
+
 
         } else if (id == R.id.nav_send) {
 
