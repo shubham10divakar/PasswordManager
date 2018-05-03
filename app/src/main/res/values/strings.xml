@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PasswordManager</string>
+    <string name="pass_wrap">PASS WRAP</string>
 </resources>
