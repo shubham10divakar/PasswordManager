@@ -142,7 +142,7 @@ public class NewUser extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
 
         if (user != null) {
-           startActivity(new Intent(NewUser.this,MainActivity.class));
+           startActivity(new Intent(NewUser.this,LoginActivity.class));
         } else {
 
         }
