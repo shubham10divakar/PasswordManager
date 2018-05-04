@@ -104,7 +104,7 @@ public class Main2Activity extends AppCompatActivity
                 popupWindow = new PopupWindow(customView, RecyclerView.LayoutParams.WRAP_CONTENT, RecyclerView.LayoutParams.WRAP_CONTENT);
 
                 //display the popup window
-                popupWindow.showAtLocation(view.findViewById(R.id.recyclerView), Gravity.CENTER, 0, 0);
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
             }
 
