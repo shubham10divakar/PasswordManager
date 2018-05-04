@@ -1,5 +1,7 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -105,6 +107,14 @@ public class Main2Activity extends AppCompatActivity
 
                 //display the popup window
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                copyPopupBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                        ClipData clip = ClipData.newPlainText("copy","copied");
+                        clipboard.setPrimaryClip(clip);
+                    }
+                });
 
             }
 
