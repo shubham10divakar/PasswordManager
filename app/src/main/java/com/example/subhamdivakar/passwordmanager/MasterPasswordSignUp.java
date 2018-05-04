@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class MasterPasswordSignUp extends AppCompatActivity {
-
+int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
