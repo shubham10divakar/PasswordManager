@@ -1,10 +1,6 @@
 package com.example.subhamdivakar.passwordmanager.Bean;
 
-/**
- * Created by Subham Divakar on 2/28/2018.
- */
-
-public class ContactSaving {
+public class EmailClass {
     public String gmail;
     public String fb;
     public String twitter;
