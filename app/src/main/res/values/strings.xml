@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PasswordManager</string>
     <string name="pass_wrap">PASS WRAP</string>
+    <string name="minimum_password">Password Length must be greater than 6 characters</string>
 </resources>

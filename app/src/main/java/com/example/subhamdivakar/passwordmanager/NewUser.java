@@ -143,6 +143,7 @@ public class NewUser extends AppCompatActivity {
 
         if (user != null) {
            startActivity(new Intent(NewUser.this,LoginActivity.class));
+
         } else {
 
         }
