@@ -94,7 +94,8 @@ public class Main2Activity extends AppCompatActivity
         adapter = new CustomAdapter(list, this);
         recyclerView.setAdapter(adapter);
         // row click listener
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
+        recyclerView.addOnItemTouchListener(new
+                RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
                 MyList myList = list.get(position);
