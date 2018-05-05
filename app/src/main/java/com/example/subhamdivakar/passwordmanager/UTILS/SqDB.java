@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.subhamdivakar.passwordmanager.Bean.AlertSms;
 import com.example.subhamdivakar.passwordmanager.Bean.ContactSaving;
+import com.example.subhamdivakar.passwordmanager.Bean.EmailClass;
 import com.example.subhamdivakar.passwordmanager.Bean.UserInfo;
 
 import java.util.HashMap;
@@ -46,6 +47,23 @@ public class SqDB extends SQLiteOpenHelper {
     public static final String contact_INFO_TABLE_COLUMN_p3 = "p3";
     public static final String contact_INFO_TABLE_COLUMN_p4 = "p4";
     public static final String contact_INFO_TABLE_COLUMN_p5 = "p5";
+    public static final String contact_INFO_TABLE_COLUMN_p6 = "p6";
+    public static final String contact_INFO_TABLE_COLUMN_p7 = "p7";
+    public static final String contact_INFO_TABLE_COLUMN_p8 = "p8";
+    public static final String contact_INFO_TABLE_COLUMN_p9 = "p9";
+    public static final String contact_INFO_TABLE_COLUMN_p10 = "p10";
+
+    public static final String email_INFO_TABLE_COLUMN_p1 = "p1";
+    public static final String email_INFO_TABLE_COLUMN_p2 = "p2";
+    public static final String email_INFO_TABLE_COLUMN_p3 = "p3";
+    public static final String email_INFO_TABLE_COLUMN_p4 = "p4";
+    public static final String email_INFO_TABLE_COLUMN_p5 = "p5";
+    public static final String email_INFO_TABLE_COLUMN_p6 = "p6";
+    public static final String email_INFO_TABLE_COLUMN_p7 = "p7";
+    public static final String email_INFO_TABLE_COLUMN_p8 = "p8";
+    public static final String email_INFO_TABLE_COLUMN_p9 = "p9";
+    public static final String email_INFO_TABLE_COLUMN_p10 = "p10";
+
 
     public static final String alert_INFO_TABLE_COLUMN_msg = "msg";
 
@@ -74,11 +92,11 @@ public class SqDB extends SQLiteOpenHelper {
 //        );
         db.execSQL(
                 "create table contact_INFO_TABLE " +
-                        "(p1 text primary key, p2 text,p3 text,p4 text,p5 text)"
+                        "(p1 text primary key, p2 text,p3 text,p4 text,p5 text,p6 text,p7 text,p8 text,p9 text,p10 text)"
         );
         db.execSQL(
-                "create table alert_INFO_TABLE " +
-                        "(msg text primary key)"
+                "create table email_INFO_TABLE " +
+                        "(p1 text primary key, p2 text,p3 text,p4 text,p5 text,p6 text,p7 text,p8 text,p9 text,p10 text)"
         );
     }
 
@@ -90,54 +108,7 @@ public class SqDB extends SQLiteOpenHelper {
                     onCreate(db);
                 }
     }
-
-
-    public boolean insertUserInfo  (String name, String mobile, String address)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("phone", mobile);
-
-        contentValues.put("address", address);
-
-      long no=  db.insert("USER_INFO_TABLE", null, contentValues);
-        if(no>0)
-        {
-            //TOAST FOR ALREADY REGISTERED bcs IF no<0 VALUE NOT INSERTED
-        }
-        return true;
-    }
-
-    public UserInfo getUserInfo()
-    {
-        UserInfo userInfo=new UserInfo();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from USER_INFO_TABLE", null );
-       if( res.moveToNext())
-       {
-         userInfo.user_name=res.getString(res.getColumnIndex(USER_INFO_TABLE_COLUMN_NAME)) ;
-
-           userInfo.phone=res.getString(res.getColumnIndex(USER_INFO_TABLE_COLUMN_PHONE)) ;
-           userInfo.address=res.getString(res.getColumnIndex(USER_INFO_TABLE_COLUMN_ADDRESS)) ;
-           return  userInfo;
-       }
-        return null;
-
-    }
-    public boolean insertbusownerInfo  (String name, String mobile, String busnum, String address)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("owner_name", name);//owner_name is the name as in field db.execSQL and same for all
-        contentValues.put("phone", mobile);
-        contentValues.put("bus_num", busnum);
-        contentValues.put("address", address);
-
-        long no=  db.insert("busowner_INFO_TABLE", null, contentValues);
-        return true;
-    }
-    public boolean insertNumber  (String p1, String p2, String p3, String p4,String p5)
+    public boolean insertPassword  (String p1, String p2, String p3, String p4,String p5,String p6,String p7,String p8,String p9,String p10)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -146,68 +117,81 @@ public class SqDB extends SQLiteOpenHelper {
         contentValues.put("p3", p3);
         contentValues.put("p4", p4);
         contentValues.put("p5", p5);
+        contentValues.put("p5", p6);
+        contentValues.put("p5", p7);
+        contentValues.put("p5", p8);
+        contentValues.put("p5", p9);
+        contentValues.put("p5", p10);
 
         db.insert("contact_INFO_TABLE", null, contentValues);
         return true;
     }
-    public boolean insertmsg  (String msg)
+
+
+    public boolean insertEmail(String p1, String p2, String p3, String p4,String p5,String p6,String p7,String p8,String p9,String p10)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("msg", msg);//owner_name is the name as in field db.execSQL and same for all
+        contentValues.put("p1", p1);//owner_name is the name as in field db.execSQL and same for all
+        contentValues.put("p2", p2);
+        contentValues.put("p3", p3);
+        contentValues.put("p4", p4);
+        contentValues.put("p5", p5);
+        contentValues.put("p5", p6);
+        contentValues.put("p5", p7);
+        contentValues.put("p5", p8);
+        contentValues.put("p5", p9);
+        contentValues.put("p5", p10);
 
-         db.insert("alert_INFO_TABLE", null, contentValues);
+        db.insert("email_INFO_TABLE", null, contentValues);
         return true;
     }
-//    public Busowner getBusowner()
-//    {
-//        Busowner busowner=new Busowner();
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor res =  db.rawQuery( "select * from busowner_INFO_TABLE", null );
-//        if( res.moveToNext())
-//        {
-//            busowner.user_name=res.getString(res.getColumnIndex(busowner_INFO_TABLE_COLUMN_name)) ;
-//            busowner.phone=res.getString(res.getColumnIndex(busowner_INFO_TABLE_COLUMN_PHONE)) ;
-//            busowner.address=res.getString(res.getColumnIndex(busowner_INFO_TABLE_COLUMN_ADDRESS)) ;
-//            busowner.bus_num=res.getString(res.getColumnIndex(busowner_INFO_TABLE_COLUMN_busnum)) ;
-//            return  busowner;
-//        }
-//        return null;
-//
-//    }
-    public ContactSaving getContact()
+
+
+
+
+
+    public ContactSaving getPassword()
     {
         ContactSaving obj=new ContactSaving();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "select * from contact_INFO_TABLE", null );
         if( res.moveToNext())
         {
-            obj.phone1=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p1)) ;
-            obj.phone2=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p2)) ;
-            obj.phone3=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p3)) ;
-            obj.phone4=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p4)) ;
-            obj.phone5=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p5)) ;
+            obj.gmail=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p1)) ;
+            obj.fb=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p2)) ;
+            obj.twitter=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p3)) ;
+            obj.paytm=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p4)) ;
+            obj.uber=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p5)) ;
+            obj.ola=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p6)) ;
+            obj.microsoft=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p7)) ;
+            obj.irctc=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p8)) ;
+            obj.linkedin=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p9)) ;
+            obj.phonepay=res.getString(res.getColumnIndex(contact_INFO_TABLE_COLUMN_p10)) ;
             return  obj;
         }
         return null;
+    }
 
-    }
-    public Cursor getAllData() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res =  db.rawQuery( "select * from contact_INFO_TABLE", null );
-        return res;
-    }
-    public AlertSms getSms()
+    public EmailClass getEmail()
     {
-        AlertSms obj1=new AlertSms();
+        EmailClass obj=new EmailClass();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from alert_INFO_TABLE", null );
+        Cursor res =  db.rawQuery( "select * from email_INFO_TABLE", null );
         if( res.moveToNext())
         {
-            obj1.alert=res.getString(res.getColumnIndex(alert_INFO_TABLE_COLUMN_msg)) ;
-            return  obj1;
+            obj.gmail=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p1)) ;
+            obj.fb=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p2)) ;
+            obj.twitter=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p3)) ;
+            obj.paytm=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p4)) ;
+            obj.uber=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p5)) ;
+            obj.ola=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p6)) ;
+            obj.microsoft=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p7)) ;
+            obj.irctc=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p8)) ;
+            obj.linkedin=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p9)) ;
+            obj.phonepay=res.getString(res.getColumnIndex(email_INFO_TABLE_COLUMN_p10)) ;
+            return  obj;
         }
         return null;
     }
-
 }
