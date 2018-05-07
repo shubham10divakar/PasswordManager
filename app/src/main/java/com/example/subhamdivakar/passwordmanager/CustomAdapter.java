@@ -1,12 +1,17 @@
 package com.example.subhamdivakar.passwordmanager;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.io.Serializable;
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
@@ -27,10 +32,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(final CustomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final CustomAdapter.ViewHolder holder, final int position) {
         MyList myList = list.get(position);
         holder.textViewHead.setText(myList.getHead());
         holder.textViewDesc.setText(myList.getDesc());
+
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mCtx, MainActivity.class);
+                intent.putExtra("list", (CharSequence) list.get(position));
+
+                mCtx.startActivity(intent);
+            }
+        });
 
         holder.buttonViewOption.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +90,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         public TextView textViewHead;
         public TextView textViewDesc;
         public TextView buttonViewOption;
+        RelativeLayout parentLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -82,6 +98,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             textViewHead = (TextView) itemView.findViewById(R.id.textViewHead);
             textViewDesc = (TextView) itemView.findViewById(R.id.textViewDesc);
             buttonViewOption = (TextView) itemView.findViewById(R.id.textViewOptions);
+            parentLayout=itemView.findViewById(R.id.parent_layout);
+
         }
     }
 }
