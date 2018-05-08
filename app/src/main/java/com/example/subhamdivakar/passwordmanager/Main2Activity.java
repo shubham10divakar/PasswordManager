@@ -92,19 +92,13 @@ public class Main2Activity extends AppCompatActivity
         //for this tutorial I am adding some dummy data directly
         EmailClass obj1=new EmailClass();
         UserInfo obj2=new UserInfo();
-        //for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             MyList myList = new MyList(
-                    "Dummy Heading " + 1,
+                    "Dummy Heading " + i,
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie nisi dui."
             );
-        MyList myList2 = new MyList(
-                "Dummy Heading " + 1,
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie nisi dui."
-        );
-
             list.add(myList);
-        list.add(myList2);
-        //}
+        }
 
         adapter = new CustomAdapter(list, this);
         recyclerView.setAdapter(adapter);

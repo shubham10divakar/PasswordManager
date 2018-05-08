@@ -33,16 +33,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(final CustomAdapter.ViewHolder holder, final int position) {
-        MyList myList = list.get(position);
+        final MyList myList = list.get(position);
         holder.textViewHead.setText(myList.getHead());
         holder.textViewDesc.setText(myList.getDesc());
+        final String h=myList.getHead();
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mCtx, MainActivity.class);
-                intent.putExtra("list", (CharSequence) list.get(position));
-
+                Intent intent = new Intent(mCtx, PasswordViewer.class);
+                intent.putExtra("list",h);
                 mCtx.startActivity(intent);
             }
         });
