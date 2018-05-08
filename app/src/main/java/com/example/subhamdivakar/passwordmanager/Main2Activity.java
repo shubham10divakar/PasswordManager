@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import com.example.subhamdivakar.passwordmanager.Bean.ContactSaving;
 import com.example.subhamdivakar.passwordmanager.Bean.EmailClass;
@@ -179,180 +180,135 @@ public class Main2Activity extends AppCompatActivity
     {
         SqDB db=new SqDB(this);
         ContactSaving obj2=db.getPassword();
-        if (obj2.gmail!=null)
-        {
-            passwords[0]=obj2.gmail;
+        if(obj2!=null) {
+            if (obj2.gmail != null) {
+                passwords[0] = obj2.gmail;
+            } else {
+                passwords[0] = desc;
+            }
+            if (obj2.fb != null) {
+                passwords[0] = obj2.fb;
+            } else {
+                passwords[0] = desc;
+            }
+            if (obj2.fb != null) {
+                passwords[1] = obj2.fb;
+            } else {
+                passwords[1] = desc;
+            }
+            if (obj2.twitter != null) {
+                passwords[2] = obj2.twitter;
+            } else {
+                passwords[2] = desc;
+            }
+            if (obj2.paytm != null) {
+                passwords[3] = obj2.paytm;
+            } else {
+                passwords[3] = desc;
+            }
+            if (obj2.uber != null) {
+                passwords[4] = obj2.uber;
+            } else {
+                passwords[4] = desc;
+            }
+            if (obj2.ola != null) {
+                passwords[5] = obj2.ola;
+            } else {
+                passwords[5] = desc;
+            }
+            if (obj2.microsoft != null) {
+                passwords[6] = obj2.microsoft;
+            } else {
+                passwords[6] = desc;
+            }
+            if (obj2.irctc != null) {
+                passwords[7] = obj2.irctc;
+            } else {
+                passwords[7] = desc;
+            }
+            if (obj2.linkedin != null) {
+                passwords[8] = obj2.linkedin;
+            } else {
+                passwords[8] = desc;
+            }
+            if (obj2.phonepay != null) {
+                passwords[9] = obj2.phonepay;
+            } else {
+                passwords[9] = desc;
+            }
         }
-        else
-        {
-            passwords[0]=desc;
-        }
-        if (obj2.fb!=null)
-        {
-            passwords[0]=obj2.fb;
-        }
-        else
-        {
-            passwords[0]=desc;
-        }
-        if (obj2.fb!=null)
-        {
-            passwords[1]=obj2.fb;
-        }
-        else
-        {
-            passwords[1]=desc;
-        }
-        if (obj2.twitter!=null)
-        {
-            passwords[2]=obj2.twitter;
-        }
-        else
-        {
-            passwords[2]=desc;
-        }
-        if (obj2.paytm!=null)
-        {
-            passwords[3]=obj2.paytm;
-        }
-        else
-        {
-            passwords[3]=desc;
-        }
-        if (obj2.uber!=null)
-        {
-            passwords[4]=obj2.uber;
-        }
-        else
-        {
-            passwords[4]=desc;
-        }
-        if (obj2.ola!=null)
-        {
-            passwords[5]=obj2.ola;
-        }
-        else
-        {
-            passwords[5]=desc;
-        }
-        if (obj2.microsoft!=null)
-        {
-            passwords[6]=obj2.microsoft;
-        }
-        else
-        {
-            passwords[6]=desc;
-        }
-        if (obj2.irctc!=null)
-        {
-            passwords[7]=obj2.irctc;
-        }
-        else
-        {
-            passwords[7]=desc;
-        }
-        if (obj2.linkedin!=null)
-        {
-            passwords[8]=obj2.linkedin;
-        }
-        else
-        {
-            passwords[8]=desc;
-        }
-        if (obj2.phonepay!=null)
-        {
-            passwords[9]=obj2.phonepay;
-        }
-        else
-        {
-            passwords[9]=desc;
-        }
+        else{
+            Toast.makeText(getApplicationContext(), "Empty emails", Toast.LENGTH_SHORT).show();
+            for(int i=0;i<10;i++)
+            {
+                passwords[i]="null";
+            }
+            }
     }//pass_word
 
     public void mail_loader()
     {
         SqDB db=new SqDB(this);
         EmailClass obj2=db.getEmail();
-        if (obj2.gmail!=null)
-        {
-            mails[0]=obj2.gmail;
+        if(obj2!=null) {
+            if (obj2.gmail != null) {
+                mails[0] = obj2.gmail;
+            } else {
+                mails[0] = desc;
+            }
+            if (obj2.fb != null) {
+                mails[1] = obj2.fb;
+            } else {
+                mails[1] = head;
+            }
+            if (obj2.twitter != null) {
+                mails[2] = obj2.twitter;
+            } else {
+                mails[2] = head;
+            }
+            if (obj2.paytm != null) {
+                mails[3] = obj2.paytm;
+            } else {
+                mails[3] = head;
+            }
+            if (obj2.uber != null) {
+                mails[4] = obj2.uber;
+            } else {
+                mails[4] = head;
+            }
+            if (obj2.ola != null) {
+                mails[5] = obj2.ola;
+            } else {
+                mails[5] = head;
+            }
+            if (obj2.microsoft != null) {
+                mails[6] = obj2.microsoft;
+            } else {
+                mails[6] = head;
+            }
+            if (obj2.irctc != null) {
+                mails[7] = obj2.irctc;
+            } else {
+                mails[7] = head;
+            }
+            if (obj2.linkedin != null) {
+                mails[8] = obj2.linkedin;
+            } else {
+                mails[8] = head;
+            }
+            if (obj2.phonepay != null) {
+                mails[9] = obj2.phonepay;
+            } else {
+                mails[9] = head;
+            }
         }
-        else
+        else{
+        Toast.makeText(getApplicationContext(), "Empty emails", Toast.LENGTH_SHORT).show();
+        for(int i=0;i<10;i++)
         {
-            mails[0]=desc;
+            mails[i]="null";
         }
-        if (obj2.fb!=null)
-        {
-            mails[1]=obj2.fb;
-        }
-        else
-        {
-            mails[1]=head;
-        }
-        if (obj2.twitter!=null)
-        {
-            mails[2]=obj2.twitter;
-        }
-        else
-        {
-            mails[2]=head;
-        }
-        if (obj2.paytm!=null)
-        {
-            mails[3]=obj2.paytm;
-        }
-        else
-        {
-            mails[3]=head;
-        }
-        if (obj2.uber!=null)
-        {
-            mails[4]=obj2.uber;
-        }
-        else
-        {
-            mails[4]=head;
-        }
-        if (obj2.ola!=null)
-        {
-            mails[5]=obj2.ola;
-        }
-        else
-        {
-            mails[5]=head;
-        }
-        if (obj2.microsoft!=null)
-        {
-            mails[6]=obj2.microsoft;
-        }
-        else
-        {
-            mails[6]=head;
-        }
-        if (obj2.irctc!=null)
-        {
-            mails[7]=obj2.irctc;
-        }
-        else
-        {
-            mails[7]=head;
-        }
-        if (obj2.linkedin!=null)
-        {
-            mails[8]=obj2.linkedin;
-        }
-        else
-        {
-            mails[8]=head;
-        }
-        if (obj2.phonepay!=null)
-        {
-            mails[9]=obj2.phonepay;
-        }
-        else
-        {
-            mails[9]=head;
-        }
+    }
     }//pass_word
 
 
