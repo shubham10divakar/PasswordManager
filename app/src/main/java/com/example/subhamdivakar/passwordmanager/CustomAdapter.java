@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.List;
@@ -36,14 +37,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         final MyList myList = list.get(position);
         holder.textViewHead.setText(myList.getHead());
         holder.textViewDesc.setText(myList.getDesc());
-        final String h=myList.getHead();
+        final String d=myList.getHead();
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mCtx, PasswordViewer.class);
-                intent.putExtra("list",h);
-                mCtx.startActivity(intent);
+                if(d.equals("No Email Stored")) {
+
+                }else{
+                    Intent intent = new Intent(mCtx, PasswordViewer.class);
+                    intent.putExtra("list", d);
+                    mCtx.startActivity(intent);
+                }
             }
         });
 
@@ -101,5 +106,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             parentLayout=itemView.findViewById(R.id.parent_layout);
 
         }
+
     }
 }

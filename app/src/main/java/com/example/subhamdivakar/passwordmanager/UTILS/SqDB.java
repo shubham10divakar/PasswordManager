@@ -6,10 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.subhamdivakar.passwordmanager.Bean.AlertSms;
 import com.example.subhamdivakar.passwordmanager.Bean.ContactSaving;
 import com.example.subhamdivakar.passwordmanager.Bean.EmailClass;
-import com.example.subhamdivakar.passwordmanager.Bean.UserInfo;
 
 import java.util.HashMap;
 
