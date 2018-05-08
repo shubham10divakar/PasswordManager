@@ -1,5 +1,7 @@
 package com.example.subhamdivakar.passwordmanager;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.List;
+
+
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
@@ -51,7 +56,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                             case R.id.menu2:
                                 //handle menu2 click
                                 break;
-
+                            case R.id.menu3:
+                                //handle menu3 click
+                                break;
                         }
                         return false;
                     }

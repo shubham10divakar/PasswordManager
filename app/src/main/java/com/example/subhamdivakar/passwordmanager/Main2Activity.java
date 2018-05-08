@@ -27,6 +27,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.PopupWindow;
 
+import com.example.subhamdivakar.passwordmanager.Bean.EmailClass;
+import com.example.subhamdivakar.passwordmanager.Bean.UserInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +38,7 @@ public class Main2Activity extends AppCompatActivity
 
     //recyclerview objects
     private RecyclerView recyclerView;
+    String head="",desc="";
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
 
@@ -84,64 +88,26 @@ public class Main2Activity extends AppCompatActivity
     }
 
     private void loadRecyclerViewItem() {
-
         //you can fetch the data from server or some apis
         //for this tutorial I am adding some dummy data directly
-        for (int i = 1; i <= 5; i++) {
+        EmailClass obj1=new EmailClass();
+        UserInfo obj2=new UserInfo();
+        //for (int i = 1; i <= 10; i++) {
             MyList myList = new MyList(
-                    "Dummy Heading " + i,
+                    "Dummy Heading " + 1,
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie nisi dui."
             );
+        MyList myList2 = new MyList(
+                "Dummy Heading " + 1,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie nisi dui."
+        );
+
             list.add(myList);
-        }
+        list.add(myList2);
+        //}
 
         adapter = new CustomAdapter(list, this);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
-        // row click listener
-        recyclerView.addOnItemTouchListener(new
-                RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                MyList myList = list.get(position);
-                //Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
-                LayoutInflater layoutInflater = (LayoutInflater) Main2Activity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View customView = layoutInflater.inflate(R.layout.popup,null);
-                copyPopupBtn=(Button)customView.findViewById(R.id.copyPopupBtn);
-                //instantiate popup window
-                popupWindow = new PopupWindow(customView, RecyclerView.LayoutParams.WRAP_CONTENT, RecyclerView.LayoutParams.WRAP_CONTENT);
-
-                //display the popup window
-                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.BLUE));
-                popupWindow.setOutsideTouchable(true);
-                popupWindow.setTouchInterceptor(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        if(event.getAction()==MotionEvent.ACTION_OUTSIDE){
-                            popupWindow.dismiss();
-                            return true;
-                        }
-                        return false;
-                    }
-                });
-
-                copyPopupBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                        ClipData clip = ClipData.newPlainText("copy","copied");
-                        clipboard.setPrimaryClip(clip);
-                    }
-                });
-
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
     }
 
     @Override
