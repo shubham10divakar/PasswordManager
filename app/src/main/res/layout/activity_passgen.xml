@@ -42,7 +42,8 @@
         android:layout_marginBottom="227dp"
         android:text="Password will be displayed here"
         tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="298dp" />
+        tools:layout_editor_absoluteY="298dp"
+        android:maxEms="30"/>
 
     <TextView
         android:id="@+id/textView4"

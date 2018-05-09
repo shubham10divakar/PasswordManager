@@ -26,7 +26,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     String headmails[]=new String[10];
     String passwords[]=new String[10],desc="Not Stored";
     String head="Not Stored";
-
+    String head2="EMPTY";
+    String desc2="EMPTY";
     public CustomAdapter(List<MyList> list, Context mCtx) {
         this.list = list;
         this.mCtx = mCtx;
@@ -83,6 +84,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                 else
                                 {
                                     //toast
+                                    Toast.makeText(mCtx, "Email and Password already stored", Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case R.id.menu2:
@@ -94,6 +96,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                 break;
                             case R.id.menu3:
                                 //handle menu2 click
+                                delete(d);
                                 break;
 
                         }
@@ -274,6 +277,81 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         }else
         {
             mails[9]=head;
+        }
+    }
+    public void delete(String id)
+    {
+        for(int i=0;i<10;i++)
+        {
+                if(id.equalsIgnoreCase(headmails[i]))
+                {
+                    pos=i+1;
+                    break;
+                }
+        }//i
+        SqDB db=new SqDB(this.mCtx);
+        switch(pos)
+        {
+            case 1:
+                db.delete1();
+                db.insertEmail1(head2);
+                db.insertPassword1(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                db.delete2();
+                db.insertEmail2(head2);
+                db.insertPassword2(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
+                db.delete3();
+                db.insertEmail3(head2);
+                db.insertPassword3(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
+            case 4:
+                db.delete4();
+                db.insertEmail4(head2);
+                db.insertPassword4(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
+            case 5:
+                db.delete5();
+                db.insertEmail5(head2);
+                db.insertPassword5(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
+            case 6:
+                db.delete6();
+                db.insertEmail6(head2);
+                db.insertPassword6(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
+            case 7:
+                db.delete7();
+                db.insertEmail7(head2);
+                db.insertPassword7(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
+            case 8:
+                db.delete8();
+                db.insertEmail8(head2);
+                db.insertPassword8(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
+            case 9:
+                db.delete9();
+                db.insertEmail9(head2);
+                db.insertPassword9(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
+            case 10:
+                db.delete10();
+                db.insertEmail10(head2);
+                db.insertPassword10(desc2);
+                Toast.makeText(mCtx, "Data Deleted", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 }

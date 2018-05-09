@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     String headmails[]=new String[10];
     String passwords[]=new String[10],desc="Not Stored";
     String emails[]=new String[10];
+    String head1="Not Stored";
+    String head12="EMPTY";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,71 +94,281 @@ public class MainActivity extends AppCompatActivity {
     public void password_loader()
     {
         SqDB db=new SqDB(this);
+        EmailClass obj1 = db.getEmail1();
+        ContactSaving obj2=db.getPassword1();
         //progressBar.setVisibility(View.GONE);
         email = inputEmail.getText().toString().trim();
         password = inputPassword.getText().toString().trim();
-        switch (pos)
+        if(obj1!=null && obj2!=null) {
+            switch (pos) {
+                case 1:
+
+                    if ((obj1 == null && obj2 == null) || (obj1.gmail.equalsIgnoreCase(head12) && obj2.gmail.equalsIgnoreCase(head12))) {
+                        db.insertEmail1(email);
+                        db.insertPassword1(password);
+                        Toast.makeText(getApplicationContext(), "Stored1", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete1();
+                        db.insertEmail1(email);
+                        db.insertPassword1(password);
+                        Toast.makeText(getApplicationContext(), "Stored1", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 2:
+                    if ((obj1 == null && obj2 == null) || (obj1.fb.equalsIgnoreCase(head12) && obj2.fb.equalsIgnoreCase(head12))) {
+                        db.insertEmail2(email);
+                        db.insertPassword2(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete2();
+                        db.insertEmail2(email);
+                        db.insertPassword2(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 3:
+                    if ((obj1 == null && obj2 == null) || (obj1.twitter.equalsIgnoreCase(head12) && obj2.twitter.equalsIgnoreCase(head12))) {
+                        db.insertEmail3(email);
+                        db.insertPassword3(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete3();
+                        db.insertEmail3(email);
+                        db.insertPassword3(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 4:
+                    if ((obj1 == null && obj2 == null) || (obj1.paytm.equalsIgnoreCase(head12) && obj2.paytm.equalsIgnoreCase(head12))) {
+                        db.insertEmail4(email);
+                        db.insertPassword4(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete4();
+                        db.insertEmail4(email);
+                        db.insertPassword4(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 5:
+                    if ((obj1 == null && obj2 == null) || (obj1.uber.equalsIgnoreCase(head12) && obj2.uber.equalsIgnoreCase(head12))) {
+                        db.insertEmail5(email);
+                        db.insertPassword5(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete5();
+                        db.insertEmail5(email);
+                        db.insertPassword5(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 6:
+                    if ((obj1 == null && obj2 == null) || (obj1.ola.equalsIgnoreCase(head12) && obj2.ola.equalsIgnoreCase(head12))) {
+                        db.insertEmail6(email);
+                        db.insertPassword6(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete6();
+                        db.insertEmail6(email);
+                        db.insertPassword6(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 7:
+                    if ((obj1 == null && obj2 == null) || (obj1.microsoft.equalsIgnoreCase(head12) && obj2.microsoft.equalsIgnoreCase(head12))) {
+                        db.insertEmail7(email);
+                        db.insertPassword7(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete7();
+                        db.insertEmail7(email);
+                        db.insertPassword7(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 8:
+                    if ((obj1 == null && obj2 == null) || (obj1.irctc.equalsIgnoreCase(head12) && obj2.irctc.equalsIgnoreCase(head12))) {
+                        db.insertEmail8(email);
+                        db.insertPassword8(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete8();
+                        db.insertEmail8(email);
+                        db.insertPassword8(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 9:
+                    if ((obj1 == null && obj2 == null) || (obj1.linkedin.equalsIgnoreCase(head12) && obj2.linkedin.equalsIgnoreCase(head12))) {
+                        db.insertEmail9(email);
+                        db.insertPassword9(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete9();
+                        db.insertEmail9(email);
+                        db.insertPassword9(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 10:
+                    if ((obj1 == null && obj2 == null) || (obj1.phonepay.equalsIgnoreCase(head12) && obj2.phonepay.equalsIgnoreCase(head12))) {
+                        db.insertEmail10(email);
+                        db.insertPassword10(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete10();
+                        db.insertEmail10(email);
+                        db.insertPassword10(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+            }
+        }
+        else
         {
-            case 1:
-                db.insertEmail1(email);
-                db.insertPassword1(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-                break;
-            case 2:
-                db.insertEmail2(email);
-                db.insertPassword2(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-                break;
-            case 3:
-                db.insertEmail3(email);
-                db.insertPassword3(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-                break;
-            case 4:
-                db.insertEmail4(email);
-                db.insertPassword4(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-                break;
-            case 5:
-                db.insertEmail5(email);
-                db.insertPassword5(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-                break;
-            case 6:
-                db.insertEmail6(email);
-                db.insertPassword6(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-                break;
-            case 7:
-                db.insertEmail7(email);
-                db.insertPassword7(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-                break;
-            case 8:
-                db.insertEmail8(email);
-                db.insertPassword8(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-                break;
-            case 9:
-                db.insertEmail9(email);
-                db.insertPassword9(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-            break;
-            case 10:
-                db.insertEmail10(email);
-                db.insertPassword10(password);
-                Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
-                finish();
-                break;
+            switch (pos) {
+                case 1:
+
+                    if ((obj1 == null && obj2 == null) ) {
+                        db.insertEmail1(email);
+                        db.insertPassword1(password);
+                        Toast.makeText(getApplicationContext(), "Stored2", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete1();
+                        db.insertEmail1(email);
+                        db.insertPassword1(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 2:
+                    if ((obj1 == null && obj2 == null) ) {
+                        db.insertEmail2(email);
+                        db.insertPassword2(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete2();
+                        db.insertEmail2(email);
+                        db.insertPassword2(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 3:
+                    if ((obj1 == null && obj2 == null) ) {
+                        db.insertEmail3(email);
+                        db.insertPassword3(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete3();
+                        db.insertEmail3(email);
+                        db.insertPassword3(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 4:
+                    if ((obj1 == null && obj2 == null) ) {
+                        db.insertEmail4(email);
+                        db.insertPassword4(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete4();
+                        db.insertEmail4(email);
+                        db.insertPassword4(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 5:
+                    if ((obj1 == null && obj2 == null) ) {
+                        db.insertEmail5(email);
+                        db.insertPassword5(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete5();
+                        db.insertEmail5(email);
+                        db.insertPassword5(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 6:
+                    if ((obj1 == null && obj2 == null) ) {
+                        db.insertEmail6(email);
+                        db.insertPassword6(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete6();
+                        db.insertEmail6(email);
+                        db.insertPassword6(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 7:
+                    if ((obj1 == null && obj2 == null) ) {
+                        db.insertEmail7(email);
+                        db.insertPassword7(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete7();
+                        db.insertEmail7(email);
+                        db.insertPassword7(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 8:
+                    if ((obj1 == null && obj2 == null)) {
+                        db.insertEmail8(email);
+                        db.insertPassword8(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete8();
+                        db.insertEmail8(email);
+                        db.insertPassword8(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 9:
+                    if ((obj1 == null && obj2 == null)) {
+                        db.insertEmail9(email);
+                        db.insertPassword9(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete9();
+                        db.insertEmail9(email);
+                        db.insertPassword9(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+                case 10:
+                    if ((obj1 == null && obj2 == null) ) {
+                        db.insertEmail10(email);
+                        db.insertPassword10(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.delete10();
+                        db.insertEmail10(email);
+                        db.insertPassword10(password);
+                        Toast.makeText(getApplicationContext(), "Stored", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                    break;
+            }
         }
     }//pass_word
 }

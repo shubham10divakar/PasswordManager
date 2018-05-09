@@ -11,7 +11,7 @@ import com.example.subhamdivakar.passwordmanager.Bean.EmailClass;
 
 import java.util.HashMap;
 
-/**
+/*
  * Created by Subham Divakar on 7/13/2016.
  */
 public class SqDB extends SQLiteOpenHelper {
@@ -132,6 +132,7 @@ public class SqDB extends SQLiteOpenHelper {
                 "create table email10_INFO_TABLE " +
                         "(p10 text primary key)"
         );
+
     }
 
     @Override
@@ -142,10 +143,73 @@ public class SqDB extends SQLiteOpenHelper {
                     onCreate(db);
                 }
     }
+
+    public void delete1()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email1_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact1_INFO_TABLE");
+        db.close();
+    }
+    public void delete2()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email2_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact2_INFO_TABLE");
+        db.close();
+    }public void delete3()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email3_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact3_INFO_TABLE");
+        db.close();
+    }public void delete4()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email4_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact4_INFO_TABLE");
+        db.close();
+    }public void delete5()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email5_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact5_INFO_TABLE");
+        db.close();
+    }public void delete6()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email6_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact6_INFO_TABLE");
+        db.close();
+    }public void delete7()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email7_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact7_INFO_TABLE");
+        db.close();
+    }public void delete8()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email8_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact8_INFO_TABLE");
+        db.close();
+    }public void delete9()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email9_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact9_INFO_TABLE");
+        db.close();
+    }public void delete10()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM email10_INFO_TABLE"); //delete all rows in a table
+        db.execSQL("DELETE FROM contact10_INFO_TABLE");
+        db.close();
+    }
     public boolean insertPassword1(String p1)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        
+
         ContentValues contentValues = new ContentValues();
         contentValues.put("p1", p1);//owner_name is the name as in field db.execSQL and same for all
         db.insert("contact1_INFO_TABLE", null, contentValues);
