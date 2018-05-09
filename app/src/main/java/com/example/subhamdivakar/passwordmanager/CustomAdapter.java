@@ -95,9 +95,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         public ViewHolder(View itemView) {
             super(itemView);
 
-            textViewHead = (TextView) itemView.findViewById(R.id.textViewHead);
-            textViewDesc = (TextView) itemView.findViewById(R.id.textViewDesc);
-            buttonViewOption = (TextView) itemView.findViewById(R.id.textViewOptions);
+            textViewHead = itemView.findViewById(R.id.textViewHead);
+            textViewDesc = itemView.findViewById(R.id.textViewDesc);
+            buttonViewOption =  itemView.findViewById(R.id.textViewOptions);
             parentLayout=itemView.findViewById(R.id.parent_layout);
 
         }

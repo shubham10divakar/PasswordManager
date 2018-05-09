@@ -148,7 +148,9 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_passgen) {
+            Intent intent=new Intent(Main2Activity.this,Passgen.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
