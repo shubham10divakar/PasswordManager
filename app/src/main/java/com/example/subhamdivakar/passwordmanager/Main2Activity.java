@@ -26,15 +26,15 @@ public class Main2Activity extends AppCompatActivity
 
     //recyclerview objects
     private RecyclerView recyclerView;
-    String head="No Email Stored",desc="No Password Stored";
+    String head = "No Email Stored", desc = "No Password Stored";
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
 
     //model object for our list data
     private List<MyList> list;
-    String headmails[]=new String[10];
-    String passwords[]=new String[10];
-    String mails[]=new String[10];
+    String headmails[] = new String[10];
+    String passwords[] = new String[10];
+    String mails[] = new String[10];
 
     //popup
     Button copyPopupBtn;
@@ -45,17 +45,15 @@ public class Main2Activity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-
-
+        headmail_loader();
+        mail_loader();
+        password_loader();
         //initializing views
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        headmail_loader();
-        mail_loader();
-        password_loader();
         //loading list view item with this function
         loadRecyclerViewItem();
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -87,16 +85,19 @@ public class Main2Activity extends AppCompatActivity
         //EmailClass obj1=db.getEmail();
         //ContactSaving obj2=db.getPassword();
         //if(obj1==null || obj2==null) {
-            for (int i = 0; i <=9; i++) {
-                MyList myList = new MyList(
-                        headmails[i],
-                        mails[i]
-                );
-                list.add(myList);
-            }
+        headmail_loader();
+        mail_loader();
+        password_loader();
+        for (int i = 0; i <= 9; i++) {
+            MyList myList = new MyList(
+                    headmails[i],
+                    mails[i]
+            );
+            list.add(myList);
+        }
 
-            adapter = new CustomAdapter(list, this);
-            recyclerView.setAdapter(adapter);
+        adapter = new CustomAdapter(list, this);
+        recyclerView.setAdapter(adapter);
         //}
     }
 
@@ -146,12 +147,12 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        } else if (id == R.id.nav_share) {
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "PASS WRAP");
             sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Click to contact us ");
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
-
 
 
         } else if (id == R.id.nav_send) {
@@ -162,154 +163,246 @@ public class Main2Activity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public  void headmail_loader()
-    {
-        headmails[0]="GMAIL";
-        headmails[1]="FACEBOOK";
-        headmails[2]="TWITTER";
-        headmails[3]="PAYTM";
-        headmails[4]="UBER";
-        headmails[5]="OLA";
-        headmails[6]="MICROSOFT";
-        headmails[7]="IRCTC";
-        headmails[8]="LINKED IN";
-        headmails[9]="PHONE PAY";
+
+    public void headmail_loader() {
+        headmails[0] = "GMAIL";
+        headmails[1] = "FACEBOOK";
+        headmails[2] = "TWITTER";
+        headmails[3] = "PAYTM";
+        headmails[4] = "UBER";
+        headmails[5] = "OLA";
+        headmails[6] = "MICROSOFT";
+        headmails[7] = "IRCTC";
+        headmails[8] = "LINKEDIN";
+        headmails[9] = "PHONEPAY";
     }
 
-    public void password_loader()
-    {
-        SqDB db=new SqDB(this);
-        ContactSaving obj2=db.getPassword();
-        if(obj2!=null) {
-            if (obj2.gmail != null) {
-                passwords[0] = obj2.gmail;
+    public void password_loader() {
+        SqDB db = new SqDB(this);
+        ContactSaving obj1 = db.getPassword1();
+        if (obj1 != null) {
+            if (obj1.gmail != null) {
+                passwords[0] = obj1.gmail;
             } else {
                 passwords[0] = desc;
             }
-            if (obj2.fb != null) {
-                passwords[0] = obj2.fb;
-            } else {
-                passwords[0] = desc;
-            }
+        } else {
+            passwords[0] = desc;
+        }
+
+        ContactSaving obj2 = db.getPassword2();
+        if (obj2 != null) {
             if (obj2.fb != null) {
                 passwords[1] = obj2.fb;
             } else {
                 passwords[1] = desc;
             }
-            if (obj2.twitter != null) {
-                passwords[2] = obj2.twitter;
+        } else {
+            passwords[1] = desc;
+        }
+
+     ContactSaving obj3 = db.getPassword3();
+        if(obj3!=null) {
+            if (obj3.twitter != null) {
+                passwords[2] = obj3.twitter;
             } else {
                 passwords[2] = desc;
             }
-            if (obj2.paytm != null) {
-                passwords[3] = obj2.paytm;
-            } else {
-                passwords[3] = desc;
+        }
+        else
+        {
+            passwords[6] = desc;
+        }
+            ContactSaving obj4 = db.getPassword4();
+            if(obj4!=null) {
+                if (obj4.paytm != null) {
+                    passwords[3] = obj4.paytm;
+                } else {
+                    passwords[3] = desc;
+                }
             }
-            if (obj2.uber != null) {
-                passwords[4] = obj2.uber;
-            } else {
-                passwords[4] = desc;
-            }
-            if (obj2.ola != null) {
-                passwords[5] = obj2.ola;
-            } else {
-                passwords[5] = desc;
-            }
-            if (obj2.microsoft != null) {
-                passwords[6] = obj2.microsoft;
-            } else {
+            else
+            {
                 passwords[6] = desc;
             }
-            if (obj2.irctc != null) {
-                passwords[7] = obj2.irctc;
-            } else {
-                passwords[7] = desc;
-            }
-            if (obj2.linkedin != null) {
-                passwords[8] = obj2.linkedin;
-            } else {
-                passwords[8] = desc;
-            }
-            if (obj2.phonepay != null) {
-                passwords[9] = obj2.phonepay;
-            } else {
-                passwords[9] = desc;
-            }
-        }
-        else{
-            Toast.makeText(getApplicationContext(), "Empty emails", Toast.LENGTH_SHORT).show();
-            for(int i=0;i<10;i++)
-            {
-                passwords[i]="null";
-            }
-            }
+            ContactSaving obj5 = db.getPassword5();
+                if(obj5!=null) {
+                    if (obj5.uber != null) {
+                        passwords[4] = obj5.uber;
+                    } else {
+                        passwords[4] = desc;
+                    }
+                }else
+                {
+                    passwords[6] = desc;
+                }
+
+            ContactSaving obj6 = db.getPassword6();
+                    if(obj6!=null) {
+                        if (obj6.ola != null) {
+                            passwords[5] = obj6.ola;
+                        } else {
+                            passwords[5] = desc;
+                        }
+                    }
+                    else
+                    {
+                        passwords[5] = desc;
+                    }
+            ContactSaving obj7 = db.getPassword7();
+                        if(obj7!=null) {
+                            if (obj7.microsoft != null) {
+                                passwords[6] = obj7.microsoft;
+                            } else {
+                                passwords[6] = desc;
+                            }
+                        }
+                        else
+                        {
+                            passwords[6] = desc;
+                        }
+            ContactSaving obj8 = db.getPassword8();
+                            if(obj8!=null) {
+                                if (obj8.irctc != null) {
+                                    passwords[7] = obj8.irctc;
+                                } else {
+                                    passwords[7] = desc;
+                                }
+                            }else{
+                                passwords[7] = desc;
+                            }
+            ContactSaving obj9 = db.getPassword1();
+                                if(obj9!=null) {
+                                    if (obj9.linkedin != null) {
+                                        passwords[8] = obj9.linkedin;
+                                    } else {
+                                        passwords[8] = desc;
+                                    }
+                                }
+                                else
+                                {
+                                    passwords[8] = desc;
+                                }
+            ContactSaving obj10 = db.getPassword10();
+                                    if(obj10!=null) {
+                                        if (obj10.phonepay != null) {
+                                            passwords[9] = obj10.phonepay;
+                                        } else {
+                                            passwords[9] = desc;
+                                        }
+                                    }else{
+                                        passwords[9] = desc;
+                                    }
     }//pass_word
 
-    public void mail_loader()
-    {
-        SqDB db=new SqDB(this);
-        EmailClass obj2=db.getEmail();
-        if(obj2!=null) {
-            if (obj2.gmail != null) {
-                mails[0] = obj2.gmail;
+
+    public void mail_loader() {
+        SqDB db = new SqDB(this);
+        EmailClass obj1 = db.getEmail1();
+        if(obj1!=null) {
+            if (obj1.gmail != null) {
+                mails[0] = obj1.gmail;
             } else {
-                mails[0] = desc;
+                mails[0] = head;
             }
-            if (obj2.fb != null) {
-                mails[1] = obj2.fb;
-            } else {
+        }else {
+            mails[0] = head;
+        }
+            EmailClass obj2 = db.getEmail2();
+            if(obj2!=null) {
+                if (obj2.fb != null) {
+                    mails[1] = obj2.fb;
+                } else {
+                    mails[1] = head;
+                }
+            }else {
                 mails[1] = head;
             }
-            if (obj2.twitter != null) {
-                mails[2] = obj2.twitter;
-            } else {
-                mails[2] = head;
+            EmailClass obj3 = db.getEmail3();
+            if(obj3!=null) {
+                if (obj3.twitter != null) {
+                    mails[2] = obj3.twitter;
+                } else {
+                    mails[2] = head;
+                }
             }
-            if (obj2.paytm != null) {
-                mails[3] = obj2.paytm;
+            else {
+                mails[2]=head;
+            }
+            EmailClass obj4 = db.getEmail4();
+        if(obj4!=null) {
+            if (obj4.paytm != null) {
+                mails[3] = obj4.paytm;
             } else {
                 mails[3] = head;
             }
-            if (obj2.uber != null) {
-                mails[4] = obj2.uber;
+        }else {
+            mails[3]=head;
+        }
+            EmailClass obj5 = db.getEmail5();
+        if(obj5!=null) {
+            if (obj5.uber != null) {
+                mails[4] = obj5.uber;
             } else {
                 mails[4] = head;
             }
-            if (obj2.ola != null) {
-                mails[5] = obj2.ola;
+        }
+        else {
+            mails[4]=head;
+        }
+            EmailClass obj6 = db.getEmail6();
+        if(obj6!=null) {
+            if (obj6.ola != null) {
+                mails[5] = obj6.ola;
             } else {
                 mails[5] = head;
             }
-            if (obj2.microsoft != null) {
-                mails[6] = obj2.microsoft;
+        }else {
+            mails[5]=head;
+        }
+            EmailClass obj7 = db.getEmail7();
+        if(obj7!=null) {
+            if (obj7.microsoft != null) {
+                mails[6] = obj7.microsoft;
             } else {
                 mails[6] = head;
             }
-            if (obj2.irctc != null) {
-                mails[7] = obj2.irctc;
+        }
+        else {
+            mails[6]=head;
+        }
+            EmailClass obj8 = db.getEmail8();
+        if(obj8!=null) {
+            if (obj8.irctc != null) {
+                mails[7] = obj8.irctc;
             } else {
                 mails[7] = head;
             }
-            if (obj2.linkedin != null) {
-                mails[8] = obj2.linkedin;
+        }
+        else {
+            mails[7]=head;
+        }
+            EmailClass obj9 = db.getEmail9();
+        if(obj9!=null) {
+            if (obj9.linkedin != null) {
+                mails[8] = obj9.linkedin;
             } else {
                 mails[8] = head;
             }
-            if (obj2.phonepay != null) {
-                mails[9] = obj2.phonepay;
+        }
+        else {
+            mails[8]=head;
+        }
+            EmailClass obj10 = db.getEmail10();
+        if(obj10!=null) {
+            if (obj10.phonepay != null) {
+                mails[9] = obj10.phonepay;
             } else {
                 mails[9] = head;
             }
-        }
-        else{
-        Toast.makeText(getApplicationContext(), "Empty emails", Toast.LENGTH_SHORT).show();
-        for(int i=0;i<10;i++)
+        }else
         {
-            mails[i]="null";
+            mails[9]=head;
         }
     }
-    }//pass_word
-
-
 }
