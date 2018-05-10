@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         img=(ImageView)findViewById(R.id.imageload);
          email = inputEmail.getText().toString().trim();
          password = inputPassword.getText().toString().trim();
+         image_loader();
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 if(id.equalsIgnoreCase(headmails[i]))
                 {
                     pos=i+1;
-                    image_loader();
                     break;
                 }
             }
@@ -96,6 +96,16 @@ public class MainActivity extends AppCompatActivity {
         headmails[9]="PHONEPAY";
     }//headmail
     private void image_loader() {
+        String id=getIntent().getStringExtra("list");
+        for(int i=0;i<10;i++)
+        {
+            if(id.equalsIgnoreCase(headmails[i]))
+            {
+                pos=i+1;
+                break;
+            }
+        }
+
         switch (pos){
             case 1:
                 img.setImageResource(R.drawable.gmail);
@@ -127,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
             case 10:
                 img.setImageResource(R.drawable.phonepe);
                 break;
-
         }
 
     }

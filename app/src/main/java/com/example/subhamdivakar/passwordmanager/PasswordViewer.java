@@ -1,5 +1,6 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -21,11 +22,12 @@ public class PasswordViewer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_viewer);
+        img=(ImageView)findViewById(R.id.img);
         headmail_loader();
         password_loader();
-        image_loader();
         getPassword();
-        img=(ImageView)findViewById(R.id.img);
+        image_loader();
+
     }
 
     private void image_loader() {
@@ -76,6 +78,7 @@ public class PasswordViewer extends AppCompatActivity {
             {
                if(id.equalsIgnoreCase(headmails[i]))
                {
+                   pos=i+1;
                    txt.setText(passwords[i]);
                    break;
                }
@@ -94,7 +97,7 @@ public class PasswordViewer extends AppCompatActivity {
         headmails[6]="MICROSOFT";
         headmails[7]="IRCTC";
         headmails[8]="LINKEDIN";
-        headmails[9]="PHONEPE";
+        headmails[9]="PHONEPAY";
     }//headmail
 
     public void password_loader() {
@@ -224,5 +227,10 @@ public class PasswordViewer extends AppCompatActivity {
             passwords[9] = desc;
         }
     }//pass_word
-
+    @Override
+   public void onBackPressed() {
+                finish();
+                Intent intent = new Intent(PasswordViewer.this,Main2Activity.class);
+                startActivity(intent);
+            }
 }
