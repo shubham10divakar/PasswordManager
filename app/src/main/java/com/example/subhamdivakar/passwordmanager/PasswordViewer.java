@@ -1,5 +1,6 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -176,4 +177,10 @@ public class PasswordViewer extends AppCompatActivity {
             passwords[9] = desc;
         }
     }//pass_word
+    @Override
+    public void onBackPressed() {
+        finish();
+        Intent intent = new Intent(PasswordViewer.this,Main2Activity.class);
+        startActivity(intent);
+    }
 }

@@ -19,7 +19,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-
     private List<MyList> list;
     private Context mCtx;
     String mails[] = new String[10];
@@ -50,13 +49,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(d.equals("No Email Stored")) {
 
-                }else{
                     Intent intent = new Intent(mCtx, PasswordViewer.class);
                     intent.putExtra("list", d);
                     mCtx.startActivity(intent);
-                }
+                    ((Main2Activity)mCtx).finish();
+
             }
         });
 
@@ -80,6 +78,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                     Intent intent = new Intent(mCtx, MainActivity.class);
                                     intent.putExtra("list", d);
                                     mCtx.startActivity(intent);
+                                    ((Main2Activity)mCtx).finish();
                                 }
                                 else
                                 {
@@ -93,12 +92,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                 Intent intent2 = new Intent(mCtx, MainActivity.class);
                                 intent2.putExtra("list", d);
                                 mCtx.startActivity(intent2);
+                                ((Main2Activity)mCtx).finish();
                                 break;
                         }
                         return false;
                     }
                 });
-                //displaying the popup
                 popup.show();
 
             }

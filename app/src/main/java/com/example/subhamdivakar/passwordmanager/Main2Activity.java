@@ -111,6 +111,7 @@ public class Main2Activity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+        //finish();
     }
 
     @Override
