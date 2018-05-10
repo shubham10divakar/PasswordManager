@@ -3,6 +3,7 @@ package com.example.subhamdivakar.passwordmanager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.subhamdivakar.passwordmanager.Bean.ContactSaving;
@@ -13,6 +14,7 @@ public class PasswordViewer extends AppCompatActivity {
 
 
     String headmails[]=new String[10];
+    ImageView img;
     String passwords[]=new String[10],desc="Not Stored";
 
     @Override
@@ -22,6 +24,7 @@ public class PasswordViewer extends AppCompatActivity {
         headmail_loader();
         password_loader();
         getPassword();
+        img=(ImageView)findViewById(R.id.img);
     }
     public void getPassword()
     {
@@ -34,6 +37,7 @@ public class PasswordViewer extends AppCompatActivity {
             {
                if(id.equalsIgnoreCase(headmails[i]))
                {
+                    //imageloader(pos);
                    txt.setText(passwords[i]);
                    break;
                }
@@ -172,5 +176,4 @@ public class PasswordViewer extends AppCompatActivity {
             passwords[9] = desc;
         }
     }//pass_word
-
 }

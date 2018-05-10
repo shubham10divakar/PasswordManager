@@ -4,14 +4,7 @@
     <item
         android:id="@+id/menu1"
         android:title="ADD ID AND PASSWORD" />
-
     <item
         android:id="@+id/menu2"
         android:title="CHANGE/EDIT" />
-
-    <item
-        android:id="@+id/menu3"
-        android:title="REMOVE" />
-
-
 </menu>

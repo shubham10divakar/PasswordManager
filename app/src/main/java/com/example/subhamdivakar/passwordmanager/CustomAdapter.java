@@ -94,11 +94,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                 intent2.putExtra("list", d);
                                 mCtx.startActivity(intent2);
                                 break;
-                            case R.id.menu3:
-                                //handle menu2 click
-                                delete(d);
-                                break;
-
                         }
                         return false;
                     }
