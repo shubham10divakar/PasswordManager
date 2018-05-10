@@ -1,7 +1,9 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -144,13 +146,27 @@ public class Main2Activity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_rateus) {
+
+            Uri uri = Uri.parse("market://details?id=" + getApplication().getPackageName());
+            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+            // To count with Play market backstack, After pressing back button,
+            // to taken back to our application, we need to add following flags to intent.
+            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            try {
+                startActivity(goToMarket);
+            } catch (ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
+            }
 
         } else if (id == R.id.nav_feedback) {
 
 
             Intent email = new Intent(Intent.ACTION_SEND);
-            email.putExtra(Intent.EXTRA_EMAIL, new String[]{"passwrap123@gmail.com"});
+            email.putExtra(Intent.EXTRA_EMAIL, new String[]{"passwrap@gmail.com"});
             email.putExtra(Intent.EXTRA_SUBJECT, "Feedback from user");
             email.putExtra(Intent.EXTRA_TEXT, "Write your feedback here");
             email.setType("message/rfc822");

@@ -1,6 +1,5 @@
 package com.example.subhamdivakar.passwordmanager;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -15,18 +14,57 @@ public class PasswordViewer extends AppCompatActivity {
 
 
     String headmails[]=new String[10];
-    ImageView img;
     String passwords[]=new String[10],desc="Not Stored";
-
+    int pos=0;
+    ImageView img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_viewer);
         headmail_loader();
         password_loader();
+        image_loader();
         getPassword();
         img=(ImageView)findViewById(R.id.img);
     }
+
+    private void image_loader() {
+        switch (pos){
+            case 1:
+                img.setImageResource(R.drawable.gmail);
+                break;
+            case 2:
+                img.setImageResource(R.drawable.facebook);
+                break;
+            case 3:
+                img.setImageResource(R.drawable.twitter);
+                break;
+            case 4:
+                img.setImageResource(R.drawable.paytm);
+                break;
+            case 5:
+                img.setImageResource(R.drawable.uber);
+                break;
+            case 6:
+                img.setImageResource(R.drawable.ola);
+                break;
+            case 7:
+                img.setImageResource(R.drawable.microsoft);
+                break;
+            case 8:
+                img.setImageResource(R.drawable.irctc);
+                break;
+            case 9:
+                img.setImageResource(R.drawable.linkedin);
+                break;
+            case 10:
+                img.setImageResource(R.drawable.phonepe);
+                break;
+
+        }
+
+    }
+
     public void getPassword()
     {
         TextView txt=(TextView)findViewById(R.id.txtview);
@@ -38,7 +76,6 @@ public class PasswordViewer extends AppCompatActivity {
             {
                if(id.equalsIgnoreCase(headmails[i]))
                {
-                    //imageloader(pos);
                    txt.setText(passwords[i]);
                    break;
                }
@@ -57,7 +94,7 @@ public class PasswordViewer extends AppCompatActivity {
         headmails[6]="MICROSOFT";
         headmails[7]="IRCTC";
         headmails[8]="LINKEDIN";
-        headmails[9]="PHONEPAY";
+        headmails[9]="PHONEPE";
     }//headmail
 
     public void password_loader() {
@@ -65,6 +102,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj1 = db.getPassword1();
         if (obj1 != null) {
             if (obj1.gmail != null) {
+                pos++;
                 passwords[0] = obj1.gmail;
             } else {
                 passwords[0] = desc;
@@ -76,6 +114,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj2 = db.getPassword2();
         if (obj2 != null) {
             if (obj2.fb != null) {
+                pos++;
                 passwords[1] = obj2.fb;
             } else {
                 passwords[1] = desc;
@@ -87,6 +126,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj3 = db.getPassword3();
         if(obj3!=null) {
             if (obj3.twitter != null) {
+                pos++;
                 passwords[2] = obj3.twitter;
             } else {
                 passwords[2] = desc;
@@ -99,6 +139,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj4 = db.getPassword4();
         if(obj4!=null) {
             if (obj4.paytm != null) {
+                pos++;
                 passwords[3] = obj4.paytm;
             } else {
                 passwords[3] = desc;
@@ -111,6 +152,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj5 = db.getPassword5();
         if(obj5!=null) {
             if (obj5.uber != null) {
+                pos++;
                 passwords[4] = obj5.uber;
             } else {
                 passwords[4] = desc;
@@ -123,6 +165,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj6 = db.getPassword6();
         if(obj6!=null) {
             if (obj6.ola != null) {
+                pos++;
                 passwords[5] = obj6.ola;
             } else {
                 passwords[5] = desc;
@@ -135,6 +178,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj7 = db.getPassword7();
         if(obj7!=null) {
             if (obj7.microsoft != null) {
+                pos++;
                 passwords[6] = obj7.microsoft;
             } else {
                 passwords[6] = desc;
@@ -147,6 +191,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj8 = db.getPassword8();
         if(obj8!=null) {
             if (obj8.irctc != null) {
+                pos++;
                 passwords[7] = obj8.irctc;
             } else {
                 passwords[7] = desc;
@@ -157,6 +202,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj9 = db.getPassword9();
         if(obj9!=null) {
             if (obj9.linkedin != null) {
+                pos++;
                 passwords[8] = obj9.linkedin;
             } else {
                 passwords[8] = desc;
@@ -169,6 +215,7 @@ public class PasswordViewer extends AppCompatActivity {
         ContactSaving obj10 = db.getPassword10();
         if(obj10!=null) {
             if (obj10.phonepay != null) {
+                pos++;
                 passwords[9] = obj10.phonepay;
             } else {
                 passwords[9] = desc;
@@ -177,10 +224,5 @@ public class PasswordViewer extends AppCompatActivity {
             passwords[9] = desc;
         }
     }//pass_word
-    @Override
-    public void onBackPressed() {
-        finish();
-        Intent intent = new Intent(PasswordViewer.this,Main2Activity.class);
-        startActivity(intent);
-    }
+
 }

@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSignIn;
     String password,email;
     int i,pos;
+    ImageView img;
     String headmails[]=new String[10];
     String passwords[]=new String[10],desc="Not Stored";
     String emails[]=new String[10];
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        img=(ImageView)findViewById(R.id.imageload);
          email = inputEmail.getText().toString().trim();
          password = inputPassword.getText().toString().trim();
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 if(id.equalsIgnoreCase(headmails[i]))
                 {
                     pos=i+1;
+                    image_loader();
                     break;
                 }
             }
@@ -91,7 +95,42 @@ public class MainActivity extends AppCompatActivity {
         headmails[8]="LINKEDIN";
         headmails[9]="PHONEPAY";
     }//headmail
+    private void image_loader() {
+        switch (pos){
+            case 1:
+                img.setImageResource(R.drawable.gmail);
+                break;
+            case 2:
+                img.setImageResource(R.drawable.facebook);
+                break;
+            case 3:
+                img.setImageResource(R.drawable.twitter);
+                break;
+            case 4:
+                img.setImageResource(R.drawable.paytm);
+                break;
+            case 5:
+                img.setImageResource(R.drawable.uber);
+                break;
+            case 6:
+                img.setImageResource(R.drawable.ola);
+                break;
+            case 7:
+                img.setImageResource(R.drawable.microsoft);
+                break;
+            case 8:
+                img.setImageResource(R.drawable.irctc);
+                break;
+            case 9:
+                img.setImageResource(R.drawable.linkedin);
+                break;
+            case 10:
+                img.setImageResource(R.drawable.phonepe);
+                break;
 
+        }
+
+    }
     public void password_loader()
     {
         SqDB db=new SqDB(this);
