@@ -1,7 +1,9 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
@@ -143,7 +145,15 @@ public class Main2Activity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_feedback) {
+
+
+            Intent email = new Intent(Intent.ACTION_SEND);
+            email.putExtra(Intent.EXTRA_EMAIL, new String[]{"passwrap123@gmail.com"});
+            email.putExtra(Intent.EXTRA_SUBJECT, "Feedback from user");
+            email.putExtra(Intent.EXTRA_TEXT, "Write your feedback here");
+            email.setType("message/rfc822");
+            startActivity(Intent.createChooser(email, "Choose an Email client :"));
 
         } else if (id == R.id.nav_passgen) {
             Intent intent=new Intent(Main2Activity.this,Passgen.class);
@@ -153,11 +163,26 @@ public class Main2Activity extends AppCompatActivity
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "PASS WRAP");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Click to contact us ");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, " App link here ");
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_exit) {
+
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Closing Activity")
+                    .setMessage("Are you sure you want to close this activity?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
 
         }
 

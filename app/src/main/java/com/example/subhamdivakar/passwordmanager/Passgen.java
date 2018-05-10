@@ -59,8 +59,8 @@ public class Passgen extends AppCompatActivity {
 
 
     private static String generatePassword(int len) {
-        System.out.println("Generating password using random() : ");
-        System.out.print("Your new password is : ");
+        //System.out.println("Generating password using random() : ");
+        //System.out.print("Your new password is : ");
 
         // A strong password has Cap_chars, Lower_chars,
         // numeric value and symbols. So we are using all of
@@ -77,17 +77,17 @@ public class Passgen extends AppCompatActivity {
         // Using random method
         Random rndm_method = new Random();
 
-        char[] password = new char[len];
-
+        //char[] password = new char[len];
+    String password="";
         for (int i = 0; i < len; i++) {
             // Use of charAt() method : to get character value
             // Use of nextInt() as it is scanning the value as int
-            password[i] =
+            password +=
                     values.charAt(rndm_method.nextInt(values.length()));
 
         }
-        String mpassword = password.toString();
-        return mpassword;
+        //String mpassword = password.toString();
+        return password;
     }
 
     @Override
