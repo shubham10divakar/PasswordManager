@@ -1,6 +1,7 @@
 package com.example.subhamdivakar.passwordmanager;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,7 +34,7 @@ public class MasterPasswordSignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_password_sign_up);
 
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mCurrentUser=FirebaseAuth.getInstance().getCurrentUser();
 
         final String current_uid=mCurrentUser.getUid();

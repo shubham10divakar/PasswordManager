@@ -1,6 +1,7 @@
 package com.example.subhamdivakar.passwordmanager;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         email=mCurrentUser.getEmail().toString();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 

@@ -2,6 +2,7 @@ package com.example.subhamdivakar.passwordmanager;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
 
@@ -18,6 +19,7 @@ public class SplashActivity extends Activity {
             super.onCreate(savedInstanceState);
             // Remove the Title Bar
             requestWindowFeature(Window.FEATURE_NO_TITLE);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
             // Get the view from splash_activity.xml
             setContentView(R.layout.splash_activity);

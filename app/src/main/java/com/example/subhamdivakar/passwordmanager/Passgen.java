@@ -2,6 +2,7 @@ package com.example.subhamdivakar.passwordmanager;
 
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -24,6 +25,7 @@ public class Passgen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passgen);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         okbtn = (Button) findViewById(R.id.passgen_okbtn);
         hint=(TextView)findViewById(R.id.textView4);
         passlenth = (EditText) findViewById(R.id.passgen_len);
@@ -37,6 +39,7 @@ public class Passgen extends AppCompatActivity {
                     if (length >= 6 && length <= 30) {
 
                         String password = generatePassword(length);
+                        Toast.makeText(Passgen.this, "Long Press On The Password to Copy", Toast.LENGTH_LONG).show();
                         passview.setText(password);
                         hint.setVisibility(View.VISIBLE);
 

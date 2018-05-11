@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/skt"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textViewForgotPassword2"
@@ -78,7 +79,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
-        android:background="#f72646"
+        android:background="@drawable/button1"
         android:text="Log In"
         android:textSize="16sp"
         android:textStyle="bold"

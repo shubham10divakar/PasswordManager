@@ -2,12 +2,14 @@ package com.example.subhamdivakar.passwordmanager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         headmail_loader();
@@ -65,21 +67,27 @@ public class MainActivity extends AppCompatActivity {
     }
     public void getPassword()
     {
-        SqDB db=new SqDB(this);
-        if(getIntent().hasExtra("list"))
-        {
-            //txt.setText(getIntent().getStringExtra("list"));
-            String id=getIntent().getStringExtra("list");
-            for(int i=0;i<10;i++)
-            {
-                if(id.equalsIgnoreCase(headmails[i]))
-                {
-                    pos=i+1;
-                    break;
+        inputEmail = (EditText) findViewById(R.id.email);
+        inputPassword = (EditText) findViewById(R.id.password);
+        email = inputEmail.getText().toString().trim();
+        password = inputPassword.getText().toString().trim();
+        if (TextUtils.isEmpty(password)||TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(), "One of the field is empty", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            SqDB db = new SqDB(this);
+            if (getIntent().hasExtra("list")) {
+                //txt.setText(getIntent().getStringExtra("list"));
+                String id = getIntent().getStringExtra("list");
+                for (int i = 0; i < 10; i++) {
+                    if (id.equalsIgnoreCase(headmails[i])) {
+                        pos = i + 1;
+                        break;
+                    }
                 }
             }
+            password_loader();
         }
-        password_loader();
     }//getPassword
 
     public  void headmail_loader()

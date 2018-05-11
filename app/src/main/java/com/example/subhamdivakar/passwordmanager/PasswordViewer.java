@@ -1,6 +1,7 @@
 package com.example.subhamdivakar.passwordmanager;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ public class PasswordViewer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_password_viewer);
         img=(ImageView)findViewById(R.id.img);
         headmail_loader();
