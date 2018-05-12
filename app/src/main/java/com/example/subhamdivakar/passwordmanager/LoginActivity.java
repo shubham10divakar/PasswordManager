@@ -142,7 +142,7 @@ public  class LoginActivity extends AppCompatActivity {
 
                     passwordEntered = LoginMasterPassword.getEditText().getText().toString();
 
-                    if(passwordEntered!=null) {
+                    if(passwordDatabase!=null) {
                         if (passwordDatabase.equals(passwordEntered)) {
                             LoginMasterPassword.getEditText().setText("");
                             startActivity(new Intent(LoginActivity.this, Main2Activity.class));
