@@ -6,8 +6,11 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +30,8 @@ public class MasterPasswordSignUp extends AppCompatActivity {
     Button Save;
     TextView ForgotPassword,HaveAPassword;
     String password,cnfpassword;
-
+    EditText e1,e2;
+    String current_uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class MasterPasswordSignUp extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mCurrentUser=FirebaseAuth.getInstance().getCurrentUser();
 
-        final String current_uid=mCurrentUser.getUid();
+        current_uid=mCurrentUser.getUid();
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
@@ -48,6 +52,12 @@ public class MasterPasswordSignUp extends AppCompatActivity {
         Save=(Button)findViewById(R.id.buttonSave);
         ForgotPassword=(TextView)findViewById(R.id.textViewForgotPassword);
         HaveAPassword=(TextView)findViewById(R.id.textViewAlreadyAccount);
+
+        e1 = (EditText) findViewById(R.id.editTextMasterPassword);
+        e2=(EditText) findViewById(R.id.editTextCnfrmMasterPassword);
+
+        e1.setOnEditorActionListener(editorListener);
+        e2.setOnEditorActionListener(editorListener);
 
 
 
@@ -97,4 +107,46 @@ public class MasterPasswordSignUp extends AppCompatActivity {
     public void onBackPressed() {
         moveTaskToBack(true);
     }
+
+
+    private TextView.OnEditorActionListener editorListener = new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            switch (actionId) {
+                case EditorInfo.IME_ACTION_NEXT:
+                    Toast.makeText(getApplicationContext(), "Enter confirm master password", Toast.LENGTH_SHORT).show();
+                    break;
+                case EditorInfo.IME_ACTION_SEND: {
+                    password = MasterPassword.getEditText().getText().toString();
+                    cnfpassword = CnfMasterPassword.getEditText().getText().toString();
+
+                    if (TextUtils.isEmpty(password) || TextUtils.isEmpty(cnfpassword)) {
+                        Toast.makeText(getApplicationContext(), "One of the field is missing", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        if (password.length() <= 6) {
+                            Toast.makeText(getApplicationContext(), "Length must be greater than 6", Toast.LENGTH_SHORT).show();
+
+
+                        } else {
+                            if (!(password.equals(cnfpassword))) {
+                                Toast.makeText(getApplicationContext(), "Both passwords must be same", Toast.LENGTH_SHORT).show();
+
+                            } else {
+                                mDatabase.child(current_uid).setValue(password);
+                                Toast.makeText(getApplicationContext(), "Welcome to Pass Wrap", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(MasterPasswordSignUp.this, Main2Activity.class));
+                                finish();
+
+                            }
+                        }
+                    }
+
+
+                    break;
+                }
+            }
+            return false;
+        }
+    };
 }
