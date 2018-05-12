@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
     String password,email;
     int i,pos;
     ImageView img;
-    String headmails[]=new String[10];
-    String passwords[]=new String[10],desc="Not Stored";
-    String emails[]=new String[10];
+    String headmails[]=new String[12];
+    String passwords[]=new String[12],desc="Not Stored";
+    String emails[]=new String[12];
     String head1="Not Stored";
     String head12="EMPTY";
     @Override
@@ -102,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
         headmails[7]="IRCTC";
         headmails[8]="LINKEDIN";
         headmails[9]="PHONEPAY";
+        headmails[10]="AMAZON";
+        headmails[11]="FLIPKART";
     }//headmail
     private void image_loader() {
         String id=getIntent().getStringExtra("list");
