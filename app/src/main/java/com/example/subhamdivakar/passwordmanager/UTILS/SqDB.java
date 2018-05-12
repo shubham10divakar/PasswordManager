@@ -31,8 +31,8 @@ public class SqDB extends SQLiteOpenHelper {
     public static final String contact8_INFO_TABLE_COLUMN_p8 = "p8";
     public static final String contact9_INFO_TABLE_COLUMN_p9 = "p9";
     public static final String contact10_INFO_TABLE_COLUMN_p10 = "p10";
-    public static final String contact10_INFO_TABLE_COLUMN_p11 = "p11";
-    public static final String contact10_INFO_TABLE_COLUMN_p12 = "p12";
+    public static final String contact11_INFO_TABLE_COLUMN_p11 = "p11";
+    public static final String contact12_INFO_TABLE_COLUMN_p12 = "p12";
 
 
     public static final String email1_INFO_TABLE_COLUMN_p1 = "p1";
@@ -45,8 +45,8 @@ public class SqDB extends SQLiteOpenHelper {
     public static final String email8_INFO_TABLE_COLUMN_p8 = "p8";
     public static final String email9_INFO_TABLE_COLUMN_p9 = "p9";
     public static final String email10_INFO_TABLE_COLUMN_p10 = "p10";
-    public static final String email10_INFO_TABLE_COLUMN_p11 = "p11";
-    public static final String email10_INFO_TABLE_COLUMN_p12 = "p12";
+    public static final String email11_INFO_TABLE_COLUMN_p11 = "p11";
+    public static final String email12_INFO_TABLE_COLUMN_p12 = "p12";
 
     public SqDB(Context context)
     {
@@ -145,10 +145,6 @@ public class SqDB extends SQLiteOpenHelper {
         );db.execSQL(
                 "create table email10_INFO_TABLE " +
                         "(p10 text primary key)"
-        );
-        db.execSQL(
-                "create table email11_INFO_TABLE " +
-                        "(p11 text primary key)"
         );
         db.execSQL(
                 "create table email11_INFO_TABLE " +
