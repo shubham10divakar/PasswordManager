@@ -19,20 +19,17 @@
         <activity android:name=".MasterPasswordSignUp" >
 
         </activity>
-        <activity android:name=".NewUser" >
+        <activity android:name=".Main2Activity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main2Activity">
+        <activity android:name=".NewUser">
 
         </activity>
         <activity android:name=".Main3Activity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Passgen" />
-        <activity android:name=".PasswordViewer" />
     </application>
 
 </manifest>
