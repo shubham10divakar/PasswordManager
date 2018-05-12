@@ -110,7 +110,7 @@ public  class LoginActivity extends AppCompatActivity {
         });
 
 
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
+        /*forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().sendPasswordResetEmail(email)
@@ -123,8 +123,20 @@ public  class LoginActivity extends AppCompatActivity {
                             }
                         });
             }
+        });*/
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),MasterPasswordSignUp.class));
+            }
         });
+
+
+
     }
+
+
 
     @Override
     public void onBackPressed() {

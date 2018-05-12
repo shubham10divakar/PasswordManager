@@ -199,7 +199,10 @@ public class Main2Activity extends AppCompatActivity
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            finish();
+                            
+
+                            moveTaskToBack(true);
+
                         }
 
                     })
