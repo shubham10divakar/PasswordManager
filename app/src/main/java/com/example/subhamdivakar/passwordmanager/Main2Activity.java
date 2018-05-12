@@ -213,7 +213,8 @@ public class Main2Activity extends AppCompatActivity
         return true;
     }
 
-    public void headmail_loader() {
+    public void headmail_loader()
+    {
         headmails[0] = "GMAIL";
         headmails[1] = "FACEBOOK";
         headmails[2] = "TWITTER";
@@ -224,6 +225,8 @@ public class Main2Activity extends AppCompatActivity
         headmails[7] = "IRCTC";
         headmails[8] = "LINKEDIN";
         headmails[9] = "PHONEPAY";
+        headmails[10]="AMAZON";
+        headmails[11]="FLIPKART";
     }
 
     public void password_loader() {

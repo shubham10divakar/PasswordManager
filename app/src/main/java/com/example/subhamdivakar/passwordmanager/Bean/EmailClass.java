@@ -11,4 +11,6 @@ public class EmailClass {
     public String irctc;
     public String linkedin;
     public String phonepay;
+    public String amazon;
+    public String flipkart;
 }

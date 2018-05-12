@@ -94,7 +94,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
                 catch(NullPointerException e)
-
                 {
 
                     Toast.makeText(LoginActivity.this, "Check your Internet Connection or another error", Toast.LENGTH_SHORT).show();

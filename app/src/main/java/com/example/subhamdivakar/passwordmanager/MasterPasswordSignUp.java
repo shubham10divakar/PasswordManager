@@ -143,7 +143,6 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Welcome to Pass Wrap", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(MasterPasswordSignUp.this, Main2Activity.class));
                                 finish();
-
                             }
                         }
                     }
