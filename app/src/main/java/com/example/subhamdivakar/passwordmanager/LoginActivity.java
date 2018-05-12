@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        int i;
+        int i,j;
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         email = mCurrentUser.getEmail().toString();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
