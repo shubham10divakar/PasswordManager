@@ -84,6 +84,8 @@ public class Main2Activity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
+
     private void loadRecyclerViewItem() {
         //you can fetch the data from server or some apis
         //for this tutorial I am adding some dummy data directly
@@ -114,6 +116,7 @@ public class Main2Activity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            moveTaskToBack(true);
         }
         //finish();
     }
@@ -451,4 +454,7 @@ public class Main2Activity extends AppCompatActivity
             mails[9]=head;
         }
     }
+
+
+
 }

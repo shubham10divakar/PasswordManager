@@ -74,7 +74,7 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                         return;
                     } else {
                         mDatabase.child(current_uid).setValue(password);
-                        startActivity(new Intent(MasterPasswordSignUp.this,MainActivity.class));
+                        startActivity(new Intent(MasterPasswordSignUp.this,Main2Activity.class));
                         finish();
                         return;
                     }}

@@ -1,12 +1,18 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.subhamdivakar.passwordmanager.Bean.ContactSaving;
 import com.example.subhamdivakar.passwordmanager.UTILS.SqDB;
@@ -16,19 +22,51 @@ public class PasswordViewer extends AppCompatActivity {
 
 
     String headmails[]=new String[10];
-    String passwords[]=new String[10],desc="Not Stored";
+    String passwords[]=new String[10],desc="Not Stored",cp;
     int pos=0;
     ImageView img;
+    Button copy;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_password_viewer);
         img=(ImageView)findViewById(R.id.img);
+        copy=(Button)findViewById(R.id.copyButton);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         headmail_loader();
         password_loader();
         getPassword();
         image_loader();
+
+        copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ClipboardManager clipboard = (ClipboardManager)   getSystemService(Context.CLIPBOARD_SERVICE);
+
+                if(getIntent().hasExtra("list"))
+                {
+                    //txt.setText(getIntent().getStringExtra("list"));
+                    String id=getIntent().getStringExtra("list");
+                    for(int i=0;i<10;i++)
+                    {
+                        if(id.equalsIgnoreCase(headmails[i]))
+                        {
+                            pos=i+1;
+                            cp=passwords[i];
+                            break;
+                        }
+                    }
+                }
+
+                ClipData clip = ClipData.newPlainText("Copied", cp);
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(getApplicationContext(), "Copied to Clipboard", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
     }
 
@@ -50,7 +88,7 @@ public class PasswordViewer extends AppCompatActivity {
                 img.setImageResource(R.drawable.uber);
                 break;
             case 6:
-                img.setImageResource(R.drawable.ola);
+                img.setImageResource(R.drawable.ola_png);
                 break;
             case 7:
                 img.setImageResource(R.drawable.microsoft);

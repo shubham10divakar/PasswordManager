@@ -7,8 +7,11 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseUser mCurrentUser;
     TextInputLayout LoginMasterPassword;
-    String passwordDatabase,passwordEntered;
+    EditText e1;
+    String passwordDatabase, passwordEntered;
     Button LogIn;
     String email;
     TextView forgotPassword;
@@ -39,16 +43,18 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-        email=mCurrentUser.getEmail().toString();
+        email = mCurrentUser.getEmail().toString();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         LoginMasterPassword = (TextInputLayout) findViewById(R.id.textInputLayoutLoginMasterPassword);
-        LogIn=(Button)findViewById(R.id.buttonLogIn);
-        forgotPassword=(TextView)findViewById(R.id.textViewForgotPassword2);
+        LogIn = (Button) findViewById(R.id.buttonLogIn);
+        forgotPassword = (TextView) findViewById(R.id.textViewForgotPassword2);
+        e1 = (EditText) findViewById(R.id.editTextLogIn);
 
         final String current_uid = mCurrentUser.getUid();
+        e1.setOnEditorActionListener(editorListener);
+
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -70,19 +76,19 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                passwordEntered=LoginMasterPassword.getEditText().getText().toString();
+                passwordEntered = LoginMasterPassword.getEditText().getText().toString();
 
-                if(passwordDatabase.equals(passwordEntered))
-                {
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                }
-                else
-                {
+                if (passwordDatabase.equals(passwordEntered)) {
+                    LoginMasterPassword.getEditText().setText("");
+                    startActivity(new Intent(LoginActivity.this, Main2Activity.class));
+
+
+                } else {
+                    LoginMasterPassword.getEditText().setText("");
                     Toast.makeText(getApplicationContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -104,8 +110,42 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
     }
+
+    private TextView.OnEditorActionListener editorListener = new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            switch (actionId) {
+
+                case EditorInfo.IME_ACTION_SEND: {
+
+
+                    passwordEntered = LoginMasterPassword.getEditText().getText().toString();
+
+
+                    if (passwordDatabase.equals(passwordEntered)) {
+                        LoginMasterPassword.getEditText().setText("");
+                        startActivity(new Intent(LoginActivity.this, Main2Activity.class));
+
+                        Toast.makeText(getApplicationContext(), "Logging In", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        LoginMasterPassword.getEditText().setText("");
+                        Toast.makeText(getApplicationContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+
+                break;
+            }
+            return false;
+
+        }
+    };
+
+
 }
