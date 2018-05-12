@@ -57,7 +57,6 @@ public class NewUser extends AppCompatActivity {
             public void onClick(View view) {
 
                 signIn();
-                startActivity(new Intent(NewUser.this,SplashActivity.class));
             }
         });
 

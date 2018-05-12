@@ -70,34 +70,33 @@ public class MasterPasswordSignUp extends AppCompatActivity {
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                password=MasterPassword.getEditText().getText().toString();
-                cnfpassword=CnfMasterPassword.getEditText().getText().toString();
-
-                if (TextUtils.isEmpty(password)||TextUtils.isEmpty(cnfpassword)) {
-                    Toast.makeText(getApplicationContext(), "One of the field is missing", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                else {
-                    if (password.length() <= 6) {
-                        Toast.makeText(getApplicationContext(), "Length must be greater than 6", Toast.LENGTH_SHORT).show();
-                        return;
-
-                    }
-                    else
-                    {
-                    if (!(password.equals(cnfpassword))) {
-                        Toast.makeText(getApplicationContext(), "Both passwords must be same", Toast.LENGTH_SHORT).show();
+                password = MasterPassword.getEditText().getText().toString();
+                cnfpassword = CnfMasterPassword.getEditText().getText().toString();
+                if (password != null) {
+                    if (TextUtils.isEmpty(password) || TextUtils.isEmpty(cnfpassword)) {
+                        Toast.makeText(getApplicationContext(), "One of the field is missing", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
-                        mDatabase.child(current_uid).setValue(password);
-                        startActivity(new Intent(MasterPasswordSignUp.this,Main2Activity.class));
-                        finish();
-                        return;
-                    }}
+                        if (password.length() <= 6) {
+                            Toast.makeText(getApplicationContext(), "Length must be greater than 6", Toast.LENGTH_SHORT).show();
+                            return;
+
+                        } else {
+                            if (!(password.equals(cnfpassword))) {
+                                Toast.makeText(getApplicationContext(), "Both passwords must be same", Toast.LENGTH_SHORT).show();
+                                return;
+                            } else {
+                                mDatabase.child(current_uid).setValue(password);
+                                startActivity(new Intent(MasterPasswordSignUp.this, Main2Activity.class));
+                                finish();
+                                return;
+                            }
+                        }
+                    }
+                }else
+                {
+                    Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
 
