@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         email = mCurrentUser.getEmail().toString();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -82,15 +82,29 @@ public class LoginActivity extends AppCompatActivity {
 
                 passwordEntered = LoginMasterPassword.getEditText().getText().toString();
 
-                if (passwordDatabase.equals(passwordEntered)) {
-                    LoginMasterPassword.getEditText().setText("");
-                    startActivity(new Intent(LoginActivity.this, Main2Activity.class));
+                try {
+                    if (passwordDatabase.equals(passwordEntered)) {
+                        LoginMasterPassword.getEditText().setText("");
+                        startActivity(new Intent(LoginActivity.this, Main2Activity.class));
 
 
-                } else {
-                    LoginMasterPassword.getEditText().setText("");
-                    Toast.makeText(getApplicationContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
+                    } else {
+                        LoginMasterPassword.getEditText().setText("");
+                        Toast.makeText(getApplicationContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                catch(NullPointerException e)
+
+                {
+
+                    Toast.makeText(LoginActivity.this, "Check your Internet Connection or another error", Toast.LENGTH_SHORT).show();
+
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(LoginActivity.this, "Check your Internet Connection or another error", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

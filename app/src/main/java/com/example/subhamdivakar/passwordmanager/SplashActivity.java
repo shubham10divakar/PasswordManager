@@ -35,8 +35,7 @@ public class SplashActivity extends Activity {
                     finish();
 
                     // Start MainActivity.class
-                    Intent myIntent = new Intent(SplashActivity.this,NewUser.class);
-                    startActivity(myIntent);
+                    startActivity(new Intent(SplashActivity.this,MasterPasswordSignUp.class));
                 }
             };
 
