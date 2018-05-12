@@ -88,7 +88,7 @@ public class PasswordViewer extends AppCompatActivity {
                 img.setImageResource(R.drawable.uber);
                 break;
             case 6:
-                img.setImageResource(R.drawable.ola_png);
+                img.setImageResource(R.drawable.ola);
                 break;
             case 7:
                 img.setImageResource(R.drawable.microsoft);
