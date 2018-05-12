@@ -2,7 +2,9 @@ package com.example.subhamdivakar.passwordmanager;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity {
+public  class LoginActivity extends AppCompatActivity {
 
 
     private DatabaseReference mDatabase;
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     Button LogIn;
     String email;
     TextView forgotPassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +82,6 @@ public class LoginActivity extends AppCompatActivity {
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 passwordEntered = LoginMasterPassword.getEditText().getText().toString();
 
                 try {
@@ -94,7 +96,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
                 catch(NullPointerException e)
-
                 {
 
                     Toast.makeText(LoginActivity.this, "Check your Internet Connection or another error", Toast.LENGTH_SHORT).show();
@@ -130,6 +131,8 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
+
+
     private TextView.OnEditorActionListener editorListener = new TextView.OnEditorActionListener() {
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -139,16 +142,20 @@ public class LoginActivity extends AppCompatActivity {
 
                     passwordEntered = LoginMasterPassword.getEditText().getText().toString();
 
-                    
-                    if (passwordDatabase.equals(passwordEntered)) {
-                        LoginMasterPassword.getEditText().setText("");
-                        startActivity(new Intent(LoginActivity.this, Main2Activity.class));
+                    if(passwordDatabase!=null) {
+                        if (passwordDatabase.equals(passwordEntered)) {
+                            LoginMasterPassword.getEditText().setText("");
+                            startActivity(new Intent(LoginActivity.this, Main2Activity.class));
 
-                        Toast.makeText(getApplicationContext(), "Logging In", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Logging In", Toast.LENGTH_SHORT).show();
 
-                    } else {
-                        LoginMasterPassword.getEditText().setText("");
-                        Toast.makeText(getApplicationContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
+                        } else {
+                            LoginMasterPassword.getEditText().setText("");
+                            Toast.makeText(getApplicationContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
+                        }
+                    }else
+                    {
+                        Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 
