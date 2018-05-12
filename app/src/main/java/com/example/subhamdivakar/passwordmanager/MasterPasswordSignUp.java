@@ -52,6 +52,12 @@ public class MasterPasswordSignUp extends AppCompatActivity {
         Save=(Button)findViewById(R.id.buttonSave);
         ForgotPassword=(TextView)findViewById(R.id.textViewForgotPassword);
         HaveAPassword=(TextView)findViewById(R.id.textViewAlreadyAccount);
+        HaveAPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MasterPasswordSignUp.this,LoginActivity.class));
+            }
+        });
 
         e1 = (EditText) findViewById(R.id.editTextMasterPassword);
         e2=(EditText) findViewById(R.id.editTextCnfrmMasterPassword);
