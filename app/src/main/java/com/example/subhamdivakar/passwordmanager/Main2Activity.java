@@ -37,9 +37,9 @@ public class Main2Activity extends AppCompatActivity
 
     //model object for our list data
     private List<MyList> list;
-    String headmails[] = new String[10];
-    String passwords[] = new String[10];
-    String mails[] = new String[10];
+    String headmails[] = new String[12];
+    String passwords[] = new String[12];
+    String mails[] = new String[12];
 
     //popup
     Button copyPopupBtn;

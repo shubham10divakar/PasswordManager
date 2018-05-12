@@ -136,8 +136,7 @@ public class LoginActivity extends AppCompatActivity {
             switch (actionId) {
 
                 case EditorInfo.IME_ACTION_SEND: {
-
-
+                    
                     passwordEntered = LoginMasterPassword.getEditText().getText().toString();
 
                     
