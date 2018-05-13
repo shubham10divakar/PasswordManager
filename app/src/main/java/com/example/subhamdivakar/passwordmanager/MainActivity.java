@@ -3,6 +3,8 @@ package com.example.subhamdivakar.passwordmanager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSignIn;
     String password,email;
     int i,pos;
+    boolean connected;
     ImageView img;
     String headmails[]=new String[12];
     String passwords[]=new String[12],desc="Not Stored";
@@ -510,4 +513,25 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }//pass_word
+    public boolean connection()
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+            //we are connected to a network
+
+            connected = true;
+            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+
+        }
+
+        else{
+            connected = false;
+            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+        }
+        return connected;
+    }
 }

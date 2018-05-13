@@ -1,8 +1,11 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -34,6 +37,7 @@ public  class LoginActivity extends AppCompatActivity {
     private FirebaseUser mCurrentUser;
     TextInputLayout LoginMasterPassword;
     EditText e1;
+    boolean connected;
     String passwordDatabase, passwordEntered;
     Button LogIn;
     String email;
@@ -62,8 +66,9 @@ public  class LoginActivity extends AppCompatActivity {
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                passwordDatabase = dataSnapshot.child(current_uid).getValue().toString();
+                if(connection()) {
+                    passwordDatabase = dataSnapshot.child(current_uid).getValue().toString();
+                }
 
                 //Toast.makeText(getApplicationContext(), password, Toast.LENGTH_SHORT).show();
 
@@ -83,27 +88,20 @@ public  class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 passwordEntered = LoginMasterPassword.getEditText().getText().toString();
-
-                try {
-                    if (passwordDatabase.equals(passwordEntered)) {
-                        LoginMasterPassword.getEditText().setText("");
-                        startActivity(new Intent(LoginActivity.this, Main2Activity.class));
-
-
-                    } else {
-                        LoginMasterPassword.getEditText().setText("");
-                        Toast.makeText(getApplicationContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
+                if(connection()) {
+                    try {
+                        if (passwordDatabase.equals(passwordEntered)) {
+                            LoginMasterPassword.getEditText().setText("");
+                            startActivity(new Intent(LoginActivity.this, Main2Activity.class));
+                        } else {
+                            LoginMasterPassword.getEditText().setText("");
+                            Toast.makeText(getApplicationContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (NullPointerException e) {
+                        Toast.makeText(LoginActivity.this, "Check your Internet Connection or another error", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(LoginActivity.this, "Check your Internet Connection or another error", Toast.LENGTH_SHORT).show();
                     }
-                }
-                catch(NullPointerException e)
-                {
-
-                    Toast.makeText(LoginActivity.this, "Check your Internet Connection or another error", Toast.LENGTH_SHORT).show();
-
-                }
-                catch (Exception e)
-                {
-                    Toast.makeText(LoginActivity.this, "Check your Internet Connection or another error", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -178,6 +176,27 @@ public  class LoginActivity extends AppCompatActivity {
 
         }
     };
+    public boolean connection()
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+            //we are connected to a network
+
+            connected = true;
+            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+
+        }
+
+        else{
+            connected = false;
+            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+        }
+        return connected;
+    }
 
 
 

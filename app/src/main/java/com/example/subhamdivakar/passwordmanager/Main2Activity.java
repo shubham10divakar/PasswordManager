@@ -1,9 +1,12 @@
 package com.example.subhamdivakar.passwordmanager;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -34,6 +37,7 @@ public class Main2Activity extends AppCompatActivity
     String head = "No Email Stored", desc = "No Password Stored";
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
+    public boolean connected;
 
     //model object for our list data
     private List<MyList> list;
@@ -51,14 +55,15 @@ public class Main2Activity extends AppCompatActivity
         setContentView(R.layout.activity_main2);
 
         headmail_loader();
-        mail_loader();
-        password_loader();
+        if(connection()==true) {
+            mail_loader();
+            password_loader();
+        }
         //initializing views
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         list = new ArrayList<>();
         //loading list view item with this function
         loadRecyclerViewItem();
@@ -461,6 +466,26 @@ public class Main2Activity extends AppCompatActivity
         }
     }
 
+    public boolean connection()
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+            //we are connected to a network
+
+            connected = true;
+            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+
+        }
+
+        else{
+            connected = false;
+            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+        }
+        return connected;
+    }
 
 }

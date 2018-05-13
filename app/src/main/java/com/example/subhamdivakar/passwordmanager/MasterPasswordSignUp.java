@@ -1,7 +1,10 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +40,7 @@ public class MasterPasswordSignUp extends AppCompatActivity {
     String current_uid;
     String passwordDatabase;
     boolean flag;
+    boolean connected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +51,9 @@ public class MasterPasswordSignUp extends AppCompatActivity {
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         current_uid = mCurrentUser.getUid();
-
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        if (connection()) {
+            mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        }
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -99,31 +104,33 @@ public class MasterPasswordSignUp extends AppCompatActivity {
             Save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    password = MasterPassword.getEditText().getText().toString();
-                    cnfpassword = CnfMasterPassword.getEditText().getText().toString();
-                    if (password != null) {
-                        if (TextUtils.isEmpty(password) || TextUtils.isEmpty(cnfpassword)) {
-                            Toast.makeText(getApplicationContext(), "One of the field is missing", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else {
-                            if (password.length() <= 6) {
-                                Toast.makeText(getApplicationContext(), "Length must be greater than 6", Toast.LENGTH_SHORT).show();
+                    if (connection()) {
+                        password = MasterPassword.getEditText().getText().toString();
+                        cnfpassword = CnfMasterPassword.getEditText().getText().toString();
+                        if (password != null) {
+                            if (TextUtils.isEmpty(password) || TextUtils.isEmpty(cnfpassword)) {
+                                Toast.makeText(getApplicationContext(), "One of the field is missing", Toast.LENGTH_SHORT).show();
                                 return;
-
                             } else {
-                                if (!(password.equals(cnfpassword))) {
-                                    Toast.makeText(getApplicationContext(), "Both passwords must be same", Toast.LENGTH_SHORT).show();
+                                if (password.length() <= 6) {
+                                    Toast.makeText(getApplicationContext(), "Length must be greater than 6", Toast.LENGTH_SHORT).show();
                                     return;
+
                                 } else {
-                                    mDatabase.child(current_uid).setValue(password);
-                                    startActivity(new Intent(MasterPasswordSignUp.this, Main2Activity.class));
-                                    finish();
-                                    return;
+                                    if (!(password.equals(cnfpassword))) {
+                                        Toast.makeText(getApplicationContext(), "Both passwords must be same", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    } else {
+                                        mDatabase.child(current_uid).setValue(password);
+                                        startActivity(new Intent(MasterPasswordSignUp.this, Main2Activity.class));
+                                        finish();
+                                        return;
+                                    }
                                 }
                             }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -192,4 +199,25 @@ public class MasterPasswordSignUp extends AppCompatActivity {
         }
 
     };
+    public boolean connection()
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+            //we are connected to a network
+
+            connected = true;
+            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+
+        }
+
+        else{
+            connected = false;
+            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+        }
+        return connected;
+    }
 }

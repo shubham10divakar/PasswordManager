@@ -1,7 +1,10 @@
 package com.example.subhamdivakar.passwordmanager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -34,7 +37,7 @@ public class NewUser extends AppCompatActivity {
     private final static int RC_SIGN_IN=2;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth.AuthStateListener mAuthListener;
-
+    boolean connected;
     @Override
     public void onStart() {
         super.onStart();
@@ -55,8 +58,9 @@ public class NewUser extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                signIn();
+                if (connection()) {
+                    signIn();
+                }
             }
         });
 
@@ -150,5 +154,26 @@ public class NewUser extends AppCompatActivity {
         } else {
 
         }
+    }
+    public boolean connection()
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+            //we are connected to a network
+
+            connected = true;
+            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+
+        }
+
+        else{
+            connected = false;
+            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+        }
+        return connected;
     }
 }
