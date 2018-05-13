@@ -109,7 +109,6 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                     if (connection()) {
                         password = MasterPassword.getEditText().getText().toString();
                         cnfpassword = CnfMasterPassword.getEditText().getText().toString();
-                        if (password != null) {
                             if (TextUtils.isEmpty(password) || TextUtils.isEmpty(cnfpassword)) {
                                 Toast.makeText(getApplicationContext(), "One of the field is missing", Toast.LENGTH_SHORT).show();
                                 return;
@@ -130,9 +129,6 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                                     }
                                 }
                             }
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
-                        }
                     }
                 }
             });
