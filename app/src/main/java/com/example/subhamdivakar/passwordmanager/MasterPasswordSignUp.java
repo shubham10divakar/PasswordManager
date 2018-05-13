@@ -59,15 +59,16 @@ public class MasterPasswordSignUp extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.child(current_uid).getValue()!=null) {
-                    passwordDatabase = dataSnapshot.child(current_uid).getValue().toString();
+                if(connection()) {
+                    if (dataSnapshot.child(current_uid).getValue() != null) {
+                        passwordDatabase = dataSnapshot.child(current_uid).getValue().toString();
+                    }
                 }
-
-                if (passwordDatabase == null) {
-                    flag = true;
-                } else {
-                    flag = false;
-                }
+//                if (passwordDatabase == null) {
+//                    flag = true;
+//                } else {
+//                    flag = false;
+//                }
 
                 //Toast.makeText(getApplicationContext(), password, Toast.LENGTH_SHORT).show();
 
@@ -102,7 +103,7 @@ public class MasterPasswordSignUp extends AppCompatActivity {
         e2.setOnEditorActionListener(editorListener);
 
 
-        if (flag == true) {
+        //if (flag == true) {
             Save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -132,9 +133,9 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                     }
                 }
             });
-        } else {
-            Toast.makeText(getApplicationContext(), "Password Already Saved", Toast.LENGTH_SHORT).show();
-        }
+//        } else {
+//            Toast.makeText(getApplicationContext(), "Password Already Saved", Toast.LENGTH_SHORT).show();
+//        }
 
 
     }
