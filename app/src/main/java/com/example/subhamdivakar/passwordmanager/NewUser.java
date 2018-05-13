@@ -54,6 +54,25 @@ public class NewUser extends AppCompatActivity {
         setContentView(R.layout.activity_new_user);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         button=(SignInButton)findViewById(R.id.googlebtn);
+        boolean connected = false;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+            //we are connected to a network
+
+            connected = true;
+            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+
+        }
+
+        else{
+            connected = false;
+            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,7 +148,7 @@ public class NewUser extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(NewUser.this,SplashActivity.class));
+                            startActivity(new Intent(NewUser.this,MasterPasswordSignUp.class));
 
 
                         } else {
