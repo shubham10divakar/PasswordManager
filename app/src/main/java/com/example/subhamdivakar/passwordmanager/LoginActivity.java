@@ -67,7 +67,9 @@ public  class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(connection()) {
-                    passwordDatabase = dataSnapshot.child(current_uid).getValue().toString();
+                    if(dataSnapshot.child(current_uid).getValue()!=null) {
+                        passwordDatabase = dataSnapshot.child(current_uid).getValue().toString();
+                    }
                 }
 
                 //Toast.makeText(getApplicationContext(), password, Toast.LENGTH_SHORT).show();
