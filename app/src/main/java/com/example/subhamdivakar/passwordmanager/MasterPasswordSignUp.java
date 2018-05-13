@@ -160,11 +160,11 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                 case EditorInfo.IME_ACTION_SEND: {
 
 
-                    if (flag == true) {
+                    //if (flag == true) {
                         password = MasterPassword.getEditText().getText().toString();
                         cnfpassword = CnfMasterPassword.getEditText().getText().toString();
 
-
+                    if (connection()) {
                         if (TextUtils.isEmpty(password) || TextUtils.isEmpty(cnfpassword)) {
                             Toast.makeText(getApplicationContext(), "One of the field is missing", Toast.LENGTH_SHORT).show();
 
@@ -185,12 +185,13 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                                 }
                             }
                         }
+                    }
 
 
                         break;
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Password Already Saved", Toast.LENGTH_SHORT).show();
-                    }
+//                    } else {
+//                        Toast.makeText(getApplicationContext(), "Password Already Saved", Toast.LENGTH_SHORT).show();
+//                    }
                 }
 
             }
@@ -209,7 +210,7 @@ public class MasterPasswordSignUp extends AppCompatActivity {
             //we are connected to a network
 
             connected = true;
-            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
 
         }
 

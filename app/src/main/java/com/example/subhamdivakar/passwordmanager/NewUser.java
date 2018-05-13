@@ -166,7 +166,7 @@ public class NewUser extends AppCompatActivity {
             //we are connected to a network
 
             connected = true;
-            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
 
         }
 
