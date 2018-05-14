@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Passgen"
     android:orientation="vertical"
+    android:background="@drawable/back"
     >
 <android.support.design.widget.TextInputEditText
     android:id="@+id/passgen_len"
@@ -19,6 +20,7 @@
     tools:layout_editor_absoluteX="84dp"
     tools:layout_editor_absoluteY="95dp"
     android:autoSizeTextType="uniform"
+    android:textColor="#ffffff"
      />
     <Button
         android:id="@+id/passgen_okbtn"
@@ -44,7 +46,8 @@
         tools:layout_editor_absoluteY="298dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:maxEms="30"/>
+        android:maxEms="30"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -56,6 +59,7 @@
         android:text="Long press on the password to copy"
         android:visibility="invisible"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="#ffffff"/>
 
 </RelativeLayout>

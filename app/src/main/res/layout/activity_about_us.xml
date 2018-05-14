@@ -63,7 +63,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Shubham Divakar,C.V.Raman College of engineering,Bhubaneshwar persuing 4 year BTech ETC"
+                    android:text="Subham Divakar,C.V.Raman College of Engineering,Bhubaneshwar pursuing  BTech in ETC branch."
                     android:textColor="@color/colorPrimaryText"
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"
@@ -83,7 +83,7 @@
                         android:layout_width="wrap_content"
 
                         android:layout_height="wrap_content"
-                        android:text="Amit Karmakar,ITER,Bhubaneshwar persuing 4 year BTech CS"
+                        android:text="Amit Karmakar,ITER,Bhubaneshwar pursuing  BTech in CS branch."
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold"
                         android:layout_marginTop="12dp"
@@ -95,7 +95,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Shikhar Kumar,KIIT,Bhubaneshawar persuing 4 year BTech ETC"
+                    android:text="Shikhar Kumar,KIIT,Bhubaneshawar pursuing  BTech in ETC branch."
                     android:textColor="@color/colorPrimaryText"
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"
