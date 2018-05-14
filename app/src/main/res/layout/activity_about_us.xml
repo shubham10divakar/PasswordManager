@@ -16,13 +16,14 @@
             android:layout_height="350dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/colorPrimaryText"
+            app:contentScrim="#ffffff"
             app:expandedTitleTextAppearance="@android:color/transparent"
             >
                <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 android:scaleType="center"
+                android:background="#ffffff"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/coollogo_com"
                 app:layout_collapseMode="parallax"/>
@@ -32,6 +33,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="Developers"
+                app:titleTextColor="@color/colorPrimaryText"
                 app:layout_collapseMode="pin"/>
 
 
