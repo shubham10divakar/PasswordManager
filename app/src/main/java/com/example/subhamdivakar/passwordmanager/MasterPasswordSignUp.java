@@ -110,7 +110,7 @@ public class MasterPasswordSignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (connection()) {
-                    if (check() != true) {
+//                    if (check() != true) {
                         password = MasterPassword.getEditText().getText().toString();
                         cnfpassword = CnfMasterPassword.getEditText().getText().toString();
                         if (TextUtils.isEmpty(password) || TextUtils.isEmpty(cnfpassword)) {
@@ -133,10 +133,10 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                                 }
                             }
                         }
-                    } else
-                    {
-                        Toast.makeText(MasterPasswordSignUp.this, "Password already present", Toast.LENGTH_SHORT).show();
-                    }
+//                    } else
+//                    {
+//                        Toast.makeText(MasterPasswordSignUp.this, "Password already present", Toast.LENGTH_SHORT).show();
+//                    }
 
                 }
                 /*else
@@ -172,7 +172,7 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                 case EditorInfo.IME_ACTION_SEND: {
 
                     if (connection()) {
-                        if (check() != true) {
+//                        if (check() != true) {
                             //if (flag == true) {
                             password = MasterPassword.getEditText().getText().toString();
                             cnfpassword = CnfMasterPassword.getEditText().getText().toString();
@@ -198,7 +198,7 @@ public class MasterPasswordSignUp extends AppCompatActivity {
                                     }
                                 }
                             }
-                        }
+                        //}
                     }
                    /* else
                     {
@@ -228,59 +228,13 @@ public class MasterPasswordSignUp extends AppCompatActivity {
             //we are connected to a network
 
             connected = true;
-            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
 
         } else {
             connected = false;
             Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
         }
         return connected;
-    }
-
-
-    public boolean check() {
-        if (connection()) {
-            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-            current_uid = mCurrentUser.getUid();
-
-            mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-
-
-            mDatabase.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    //if (connection()) {
-                    if (dataSnapshot.child(current_uid).getValue() != null) {
-                        passwordDatabase = dataSnapshot.child(current_uid).getValue().toString();
-                        flag=true;
-                    }
-                    else {
-                        flag = false;
-                        //}
-                    }
-//                if (passwordDatabase == null) {
-//                    flag = true;
-//                } else {
-//                    flag = false;
-//                }
-
-                    //Toast.makeText(getApplicationContext(), password, Toast.LENGTH_SHORT).show();
-
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-
-
-            });
-        }
-
-    return flag;
     }
 }
 

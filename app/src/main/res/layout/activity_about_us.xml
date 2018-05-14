@@ -36,11 +36,7 @@
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
-
-
-
     </android.support.design.widget.AppBarLayout>
-
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -61,7 +57,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Shubham Divakar,C.V.Raman College of engineering,Bhubaneshwar"
+                    android:text="Subham Divakar,C.V.Raman College of Engineering,Bhubaneshwar"
                     android:textColor="@color/colorPrimaryText"
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"
@@ -72,38 +68,29 @@
                     android:padding="1dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <!--<ImageView-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:src="@drawable/ic_action_name"/>-->
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="7"
                         android:layout_height="wrap_content"
-                        android:text="Amit Karmakar,ITER,Bhubaneshwarfgaufhhukfaghauk"
+                        android:text="Amit Karmakar,ITER,Bhubaneshwar"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:layout_marginTop="12dp"
                         android:textSize="20sp"
                         android:padding="12dp"
                         android:layout_gravity="center_vertical"/>
-
                 </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Shikhar Kumar,KIIT,Bhubaneshawarfnkanfkjnflkajfjaf"
+                    android:text="Shikhar Kumar,KIIT,Bhubaneshawar"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"
                     android:textSize="20sp"
                     android:padding="12dp"/>
             </LinearLayout>
-
         </android.support.v7.widget.CardView>
-
-
     </android.support.v4.widget.NestedScrollView>
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"

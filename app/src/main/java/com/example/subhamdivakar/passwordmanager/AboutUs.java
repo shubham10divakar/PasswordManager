@@ -20,6 +20,4 @@ public class AboutUs extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
-
-
 }
