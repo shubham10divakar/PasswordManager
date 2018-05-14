@@ -65,13 +65,14 @@ public class NewUser extends AppCompatActivity {
             //we are connected to a network
 
             connected = true;
-            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
 
         }
 
         else{
             connected = false;
-            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), "Not Connected", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
         }
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -191,7 +192,9 @@ public class NewUser extends AppCompatActivity {
 
         else{
             connected = false;
-            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), "Not Connected", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            //Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
         }
         return connected;
     }

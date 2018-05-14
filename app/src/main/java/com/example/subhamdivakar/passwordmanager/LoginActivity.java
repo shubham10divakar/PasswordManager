@@ -195,7 +195,9 @@ public  class LoginActivity extends AppCompatActivity {
 
         else{
             connected = false;
-            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), "Not Connected", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            //Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
         }
         return connected;
     }

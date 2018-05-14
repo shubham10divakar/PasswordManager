@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -141,9 +142,9 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -479,13 +480,15 @@ public class Main2Activity extends AppCompatActivity
             //we are connected to a network
 
             connected = true;
-            Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "connected", Toast.LENGTH_SHORT).show();
 
         }
 
         else{
             connected = false;
-            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), "Not Connected", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            //Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
         }
         return connected;
     }

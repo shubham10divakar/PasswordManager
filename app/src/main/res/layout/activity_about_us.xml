@@ -16,15 +16,15 @@
             android:layout_height="350dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/colorPrimary"
+            app:contentScrim="@color/colorPrimaryText"
             app:expandedTitleTextAppearance="@android:color/transparent"
             >
                <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:scaleType="centerCrop"
+                android:scaleType="center"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/back"
+                android:src="@drawable/coollogo_com"
                 app:layout_collapseMode="parallax"/>
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Shubham Divakar,C.V.Raman College of engineering,Bhubaneshwar"
+                    android:text="Shubham Divakar,C.V.Raman College of engineering,Bhubaneshwar persuing 4 year BTech ETC"
                     android:textColor="@color/colorPrimaryText"
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"
@@ -78,11 +78,11 @@
                         <!--android:layout_weight="1"-->
                         <!--android:src="@drawable/ic_action_name"/>-->
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="7"
+                        android:layout_width="wrap_content"
+
                         android:layout_height="wrap_content"
-                        android:text="Amit Karmakar,ITER,Bhubaneshwarfgaufhhukfaghauk"
-                        android:textColor="@color/colorPrimary"
+                        android:text="Amit Karmakar,ITER,Bhubaneshwar persuing 4 year BTech CS"
+                        android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold"
                         android:layout_marginTop="12dp"
                         android:textSize="20sp"
@@ -93,8 +93,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Shikhar Kumar,KIIT,Bhubaneshawarfnkanfkjnflkajfjaf"
-                    android:textColor="@color/colorPrimary"
+                    android:text="Shikhar Kumar,KIIT,Bhubaneshawar persuing 4 year BTech ETC"
+                    android:textColor="@color/colorPrimaryText"
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"
                     android:textSize="20sp"
@@ -109,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="6dp"
-        android:src="@drawable/ic_action_name"
+        android:src="@drawable/ic_aboutus"
         app:pressedTranslationZ="12dp"
         app:layout_anchor="@id/app_bar_layout"
         app:layout_anchorGravity="bottom|right|end"/>
