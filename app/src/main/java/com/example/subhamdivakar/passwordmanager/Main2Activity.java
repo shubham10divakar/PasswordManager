@@ -154,7 +154,9 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_aboutus) {
+            Intent intent=new Intent(Main2Activity.this,AboutUs.class);
+            startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.nav_rateus) {
 
