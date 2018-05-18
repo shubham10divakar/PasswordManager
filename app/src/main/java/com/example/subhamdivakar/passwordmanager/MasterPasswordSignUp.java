@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,12 +42,13 @@ public class MasterPasswordSignUp extends AppCompatActivity {
     String passwordDatabase;
     boolean flag;
     boolean connected;
+    View parentLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_password_sign_up);
-
+        parentLayout = findViewById(android.R.id.content);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -232,7 +234,17 @@ public class MasterPasswordSignUp extends AppCompatActivity {
 
         } else {
             connected = false;
-            Toast.makeText(getApplicationContext(), "not connected", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(), "Not connected", Toast.LENGTH_SHORT).show();
+
+            Snackbar.make(parentLayout, "Not Connected", Snackbar.LENGTH_LONG)
+                    .setAction("CLOSE", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
+                    .show();
         }
         return connected;
     }
