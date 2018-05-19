@@ -6,15 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_aboutus"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_aboutus"
             android:title="About us" />
         <item
             android:id="@+id/nav_rateus"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_rateus"
             android:title="Rate us" />
         <item
             android:id="@+id/nav_feedback"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_sendfeedback"
             android:title="Send feedback" />
         <item
             android:id="@+id/nav_passgen"
@@ -30,7 +30,7 @@
                 android:title="Share" />
             <item
                 android:id="@+id/nav_exit"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_exitapp"
                 android:title="Exit" />
         </menu>
     </item>
